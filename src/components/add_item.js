@@ -13,7 +13,7 @@ const AddItem = () => {
 
   //Change handler
   const inputChange = (event) => {
-    // validateItem(event);
+    validateItem(event);
     setItem({ ...item, [event.target.name]: event.target.value });
   };
   //Submit handler
@@ -23,29 +23,30 @@ const AddItem = () => {
   };
 
   //Errors state
-  //   const [errors, setErrors] = useState({
-  //     name: "",
-  //   });
+  const [errors, setErrors] = useState({
+    name: "",
+    description: "",
+  });
 
   //Validation
-  //   const validateItem = (event) => {
-  //     yup
-  //       .reach(schema, event.target.name)
-  //       .validate(event.target.value)
-  //       .then((valid) => {
-  //         setErrors({
-  //           ...errors,
-  //           [event.target.name]: "",
-  //         });
-  //       })
-  //       .catch((err) => {
-  //         console.log(err.errors);
-  //         setErrors({
-  //           ...errors,
-  //           [event.target.name]: err.errors[0],
-  //         });
-  //       });
-  //   };
+  const validateItem = (event) => {
+    yup
+      .reach(schema, event.target.name)
+      .validate(event.target.value)
+      .then((valid) => {
+        setErrors({
+          ...errors,
+          [event.target.name]: "",
+        });
+      })
+      .catch((err) => {
+        console.log(err.errors);
+        setErrors({
+          ...errors,
+          [event.target.name]: err.errors[0],
+        });
+      });
+  };
 
   //logic for displaying added items on screen
   let itemValue = () => {
