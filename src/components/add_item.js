@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import schema from "../validation/itemSchema";
+import * as yup from "yup";
 
 // Component for owner to add an item
 const AddItem = () => {
@@ -11,6 +13,7 @@ const AddItem = () => {
 
   //Change handler
   const inputChange = (event) => {
+    // validateItem(event);
     setItem({ ...item, [event.target.name]: event.target.value });
   };
   //Submit handler
@@ -19,14 +22,30 @@ const AddItem = () => {
     console.log("New item added");
   };
 
-  //Errors
-  const [errors, setErrors] = useState({
-    name: "",
-    description: "",
-  });
+  //Errors state
+  //   const [errors, setErrors] = useState({
+  //     name: "",
+  //   });
 
   //Validation
-  const validateItem = () => {};
+  //   const validateItem = (event) => {
+  //     yup
+  //       .reach(schema, event.target.name)
+  //       .validate(event.target.value)
+  //       .then((valid) => {
+  //         setErrors({
+  //           ...errors,
+  //           [event.target.name]: "",
+  //         });
+  //       })
+  //       .catch((err) => {
+  //         console.log(err.errors);
+  //         setErrors({
+  //           ...errors,
+  //           [event.target.name]: err.errors[0],
+  //         });
+  //       });
+  //   };
 
   //logic for displaying added items on screen
   let itemValue = () => {
