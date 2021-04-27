@@ -1,17 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import LoginForm from './components/LoginForm';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import "bootstrap/dist/css/bootstrap.min.css";
+import TechList from "./Components/TechList";
+import LoginForm from "./Components/LoginForm"
 
-ReactDOM.render(
-  // <React.StrictMode>
-  //   {/* <App /> */}
-  // </React.StrictMode>,
-    <LoginForm />,
-  document.getElementById('root')
-);
+ReactDOM.render(<LoginForm />, document.getElementById("root"));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

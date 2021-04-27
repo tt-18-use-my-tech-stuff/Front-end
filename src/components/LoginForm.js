@@ -2,8 +2,9 @@ import React from "react";
 import { useLogin } from "./useLogin";
 // import axios from "axios";
 
+
 function LoginForm() {
-  const [user, handleChange, handleSubmit] = useLogin();
+  const [values, errors, handleChange, handleSubmit, isSubmitting] = useLogin();
   
   // if (user && !user.isAuthenticated) return <Redirect to='/home' />
 
@@ -27,8 +28,9 @@ function LoginForm() {
             onChange={handleChange}
           />
         </label>
+        
         <div>
-          <button type="submit" onClick={handleSubmit}>
+          <button disabled={isSubmitting} type="submit" onClick={handleSubmit}>
             Submit
           </button>
         </div>
