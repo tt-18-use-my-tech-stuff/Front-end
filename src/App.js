@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import AddItem from "./components/add_item";
+import AddItem from "./Components/add_item";
 
 function App() {
   return (
