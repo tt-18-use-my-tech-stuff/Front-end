@@ -22,7 +22,7 @@ function App() {
       </Navbar>
       <Switch>
         <Route exact path="/" component={LoginForm} />
-        <Route path="/signUp" component={SignUp} />
+        <Route path="/signUp" component={"SignUp"} />
         <Route path="/addItem" component={AddItem} />
         <Route path="/items" component={TechList} />
         <Route path="/items/:id" component ={"editItem.js"} />
