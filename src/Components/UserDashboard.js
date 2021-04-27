@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { axiosWithAuth } from "./helpers/axiosWithAuth";
 
 function UserDashboard () {
     const [ items, setItem ] = useState([]);
     const [request, setRequest] = useState([])
 
-    useEffect(()=>{
-
+    useEffect(()=> {
+        axiosWithAuth()
+        .get()
+        .then(res=>{
+            setRequest(res.data)
+        })
+        .catch(err=> {
+            console.log(err.response)
+        })
     }, [])
     return(
         <div>
