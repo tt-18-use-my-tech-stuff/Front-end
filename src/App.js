@@ -12,7 +12,7 @@ function App() {
         <Navbar.Brand href="#">Use My Tech Stuff</Navbar.Brand>
       <Nav >
         <Nav.Link href="/">Login</Nav.Link>
-        <Nav.Link href="/signUp">SignUp</Nav.Link>
+        <Nav.Link href="/signUp">Sign Up</Nav.Link>
         <Nav.Link href="/items">Items</Nav.Link>
         <Nav.Link href="/addItem">Add Item</Nav.Link>
       </Nav>
