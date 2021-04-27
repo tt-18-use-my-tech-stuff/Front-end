@@ -53,11 +53,11 @@ const TechList = ({ itemList }) => {
         <Row>
           {itemList.map((item) => {
             if (
-              item.title &&
-              item.title.toLowerCase().includes(searchTerm.toLowerCase())
+              item.item_name &&
+              item.item_name.toLowerCase().includes(searchTerm.toLowerCase())
             ) {
               return (
-                <Col xs="12" sm="6" md="4" key={item.id}>
+                <Col xs="12" sm="6" md="4" key={item.item_id}>
                   <TechItem item={item} />
                 </Col>
               );
