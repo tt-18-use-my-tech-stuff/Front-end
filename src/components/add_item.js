@@ -20,6 +20,17 @@ const AddItem = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     console.log("New item added");
+    alert("New Item Added 🤠");
+    setItem({
+      name: "",
+      description: "",
+    });
+    // axios
+    // .post('url', item)
+    // .then(res => {
+    //     console.log(res);
+    // })
+    // .catch(err => console.log(err))
     // TODO(Kaseem): add axios for POST
   };
 
@@ -79,6 +90,8 @@ const AddItem = () => {
 
       <button disabled={!item.name || !item.description}>Add Item</button>
       {itemValue()}
+      <p>{errors.name}</p>
+      <p>{errors.description}</p>
     </form>
   );
 };
