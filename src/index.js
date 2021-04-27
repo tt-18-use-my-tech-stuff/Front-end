@@ -4,10 +4,13 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
-import TechList from "./Components/TechList";
-import LoginForm from "./Components/LoginForm"
+import { BrowserRouter as Router } from "react-router-dom";
 
-ReactDOM.render(<LoginForm />, document.getElementById("root"));
+ReactDOM.render(
+    <Router>
+        <App />
+    </Router>
+, document.getElementById("root"));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

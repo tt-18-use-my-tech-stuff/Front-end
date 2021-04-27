@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react';
 
+const initialFormValues = ""
 export default function Form() {
     const [Valu, setFormValues] = useState({
     });
