@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+.body {
+  color: #212529;
+  background-image: url("https://th.bing.com/th/id/R928a82a919903562ccd822930b7ec902?rik=c%2bWj6mgV2wigXw&pid=ImgRaw");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(255, 255, 255, 0.4);
+  background-blend-mode: lighten;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -42,14 +51,29 @@
   align-items: center;
   padding: 1rem;
 }
-.navbar .navbar-nav{
+.navbar .navbar-nav {
   text-align: right;
 }
 .navbar-dark {
   background-color: #2e3842;
- 
 }
 a {
   text-decoration: none;
   color: white;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #f6f7fb;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+  color: #47b3d4;
 }
