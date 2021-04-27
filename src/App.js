@@ -29,7 +29,7 @@ function App() {
         <Route path="/signUp" component={SignUp} />
         <Route path="/addItem" component={AddItem} />
 
-        <Route path="/items" component={TechList}>
+        <Route path="/items">
           <TechList itemList={DummyData} />
         </Route>
         <Route path="/lenderDashboard" component={LenderDashboard} />
