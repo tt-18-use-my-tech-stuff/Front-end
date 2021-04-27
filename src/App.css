@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+.navbar .navbar-nav{
+  text-align: right;
+}
+.navbar-dark {
+  background-color: #2e3842;
+ 
+}
+a {
+  text-decoration: none;
+  color: white;
+}

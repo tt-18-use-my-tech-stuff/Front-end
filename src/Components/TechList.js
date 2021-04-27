@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Card, CardBody } from "reactstrap";
-import { SpinnerDiv, Spinner } from "../Components/styled-components/spinner";
+import { SpinnerDiv, Spinner } from "./styled-components/spinner";
 // import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { Button, Form, Label, Input } from "reactstrap";
 import TechItem from "./TechItem";
