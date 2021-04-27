@@ -30,10 +30,21 @@ const SignupPage = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormValues);
   const [disabled, setDisabled] = useState(true);
-  const { push } = useHistory();
+  const history = useHistory();
 
   const onSubmit = (e) => {
     e.preventDefault();
+    axios
+      .post(
+        "https://tt18-build-week.herokuapp.com/api/auth/register",
+        formValues
+      )
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("token", res.data.token);
+        history.push("/items");
+      })
+      .catch((err) => console.log(err.response));
     setFormValues(initialFormValues);
   };
 
