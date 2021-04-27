@@ -5,11 +5,8 @@ import { SpinnerDiv, Spinner } from "./styled-components/spinner";
 // import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { Button, Form, Label, Input } from "reactstrap";
 import TechItem from "./TechItem";
-import { DummyData } from "./MockData/DummyData";
 
 const TechList = ({ itemList }) => {
-  const allItems = itemList ? itemList : DummyData;
-
   const [isFetching, setIsFetching] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -27,7 +24,7 @@ const TechList = ({ itemList }) => {
 
   //   }, []);
 
-  const gotallItems = allItems.length !== 0 ? true : false;
+  const gotItemList = itemList.length !== 0 ? true : false;
 
   if (isFetching)
     return (
@@ -35,7 +32,7 @@ const TechList = ({ itemList }) => {
         <Spinner color="success" />
       </SpinnerDiv>
     );
-  else if (gotallItems)
+  else if (gotItemList)
     return (
       <Container>
         <div>
@@ -54,7 +51,7 @@ const TechList = ({ itemList }) => {
           </Form>
         </div>
         <Row>
-          {allItems.map((item) => {
+          {itemList.map((item) => {
             if (
               item.title &&
               item.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -69,7 +66,7 @@ const TechList = ({ itemList }) => {
         </Row>
       </Container>
     );
-  else if (!gotallItems)
+  else if (!gotItemList)
     return (
       <Container style={{ margin: "50px auto" }}>
         <Row>

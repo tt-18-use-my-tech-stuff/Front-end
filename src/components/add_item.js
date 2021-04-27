@@ -2,6 +2,21 @@ import React, { useState } from "react";
 import axios from "axios";
 import schema from "../validation/itemSchema";
 import * as yup from "yup";
+import styled from "styled-components";
+import { Container, Row, Col, Button } from "reactstrap";
+
+const FormContainer = styled.div`
+  margin-top: 150px;
+  width: 100%;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid #d5d5d5;
+  border-radius: 5px;
+  margin-bottom: 15px;
+`;
 
 // Component for owner to add an item
 const AddItem = () => {
@@ -61,24 +76,39 @@ const AddItem = () => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <label>
-        Item Name:
-        <input name="name" value={item.name} onChange={inputChange} />
-      </label>
+    <Container>
+      <Row>
+        <Col xs="12" md={{ size: 6, offset: 3 }}>
+          <FormContainer>
+            <h3>Add an Item</h3>
+            <form onSubmit={onSubmit}>
+              <label>
+                Item Name:
+                <Input name="name" value={item.name} onChange={inputChange} />
+              </label>
 
-      <label>
-        Description:
-        <input
-          name="description"
-          value={item.description}
-          onChange={inputChange}
-        />
-      </label>
-
-      <button disabled={!item.name || !item.description}>Add Item</button>
-      {itemValue()}
-    </form>
+              <label>
+                Description:
+                <Input
+                  name="description"
+                  value={item.description}
+                  onChange={inputChange}
+                />
+              </label>
+              <div>
+                <Button
+                  type="submit"
+                  disabled={!item.name || !item.description}
+                >
+                  Add Item
+                </Button>
+              </div>
+              {itemValue()}
+            </form>
+          </FormContainer>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
