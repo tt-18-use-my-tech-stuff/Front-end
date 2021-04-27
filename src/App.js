@@ -8,10 +8,8 @@ import SignUp from "./Components/SignupPage";
 import LoginForm from "./Components/LoginForm";
 import { DummyData } from "./Components/MockData/DummyData";
 import LenderDashboard from "./Components/LenderDashboard";
-import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
-  const [storedValue, setLocallyStoredValue] = useLocalStorage("token", "potato")
   return (
     <div className="App">
       <Navbar collapseOnSelect expand="lg" variant="dark">
@@ -19,7 +17,7 @@ function App() {
         <Nav>
           <Nav.Link href="/">Login</Nav.Link>
           <Nav.Link href="/signUp">Sign Up</Nav.Link>
-          {storedValue && <Nav.Link href="/items">Items</Nav.Link>}
+          <Nav.Link href="/items">Items</Nav.Link>
           <Nav.Link href="/addItem">Add Item</Nav.Link>
         </Nav>
       </Navbar>
