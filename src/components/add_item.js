@@ -3,7 +3,7 @@ import axios from "axios";
 import schema from "../validation/itemSchema";
 import * as yup from "yup";
 
-// Component for owner to add an item
+//Component for owner to add an item
 const AddItem = () => {
   //New item state
   const [item, setItem] = useState({
@@ -20,6 +20,7 @@ const AddItem = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     console.log("New item added");
+    // TODO(Kaseem): add axios for POST
   };
 
   //Errors state
@@ -33,7 +34,7 @@ const AddItem = () => {
     yup
       .reach(schema, event.target.name)
       .validate(event.target.value)
-      .then((valid) => {
+      .then(() => {
         setErrors({
           ...errors,
           [event.target.name]: "",
@@ -53,8 +54,8 @@ const AddItem = () => {
     if (item.name !== "" && item.description !== "") {
       return (
         <div>
-          <p>{JSON.stringify(item.name)}</p>
-          <p>{JSON.stringify(item.description)}</p>
+          <p>{item.name}</p>
+          <p>{item.description}</p>
         </div>
       );
     }
