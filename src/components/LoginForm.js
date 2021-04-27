@@ -1,50 +1,91 @@
-import React, { useState } from "react";
+import React from "react";
+import { useLogin } from "./useLogin";
 // import axios from "axios";
 
 function LoginForm() {
-
-  const [state, setState] = useState({
-    username: "",
-    password: "",
-  })
-
-  const onChange = (e) => {
-    // update the inputs
-    setState({...state, [e.target.name]: e.target.value})
-  }
+  const [user, handleChange, handleSubmit] = useLogin();
+  
+  // if (user && !user.isAuthenticated) return <Redirect to='/home' />
 
   return (
     <div className="login-wrapper">
-      <h1>Log In Here</h1>
-      <h3>If you have an existing account...</h3>
+      <h3>Log In Here</h3>
       <form>
         <label>
           Username
-          <input 
+          <input
             type="text"
             name="username"
-            value={ state.username }
-            onChange={onChange}
+            onChange={handleChange}
           />
         </label>
         <label>
           Password
-          <input 
+          <input
             type="password"
             name="password"
-            value={ state.password }
-            onChange={onChange}
+            onChange={handleChange}
           />
         </label>
         <div>
-          <button type="submit">
+          <button type="submit" onClick={handleSubmit}>
             Submit
           </button>
         </div>
       </form>
     </div>
-  )
+  );
 }
 
-export default LoginForm;
+// function LoginForm(/*props*/) {
 
+//   // const { values, submit, change, disabled, errors } = props;
+
+//   const [state, setState] = useState({
+//     username: "",
+//     password: "",
+//   })
+
+//   const onSubmit = (evt) => {
+//     evt.preventDefault();
+//     // submit();
+//   }
+
+//   const onChange = (evt) => {
+//     // update the inputs
+//     setState({...state, [evt.target.name]: evt.target.value})
+//   }
+
+//   return (
+//     <div className="login-wrapper" onSubmit={onSubmit}>
+//       <h3>Log In Here</h3>
+//       <form>
+//         <label>
+//           Username
+//           <input
+//             type="text"
+//             name="username"
+//             value={state.username}
+//             onChange={onChange}
+//           />
+//         </label>
+//         <label>
+//           Password
+//           <input
+//             type="password"
+//             name="password"
+//             value={ state.password }
+//             onChange={onChange}
+//           />
+//         </label>
+//         <div>
+//           <button type="submit">
+//             Submit
+//           </button>
+//         </div>
+//       </form>
+//     </div>
+//   )
+// }
+
+export default LoginForm;
