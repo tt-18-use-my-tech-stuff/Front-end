@@ -5,11 +5,8 @@ import { SpinnerDiv, Spinner } from "./styled-components/spinner";
 // import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { Button, Form, Label, Input } from "reactstrap";
 import TechItem from "./TechItem";
-import { DummyData } from "./MockData/DummyData";
 
-const TechList = () => {
-  const [allItems, setAllItems] = useState(DummyData);
-
+const TechList = ({ itemList }) => {
   const [isFetching, setIsFetching] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -27,7 +24,7 @@ const TechList = () => {
 
   //   }, []);
 
-  const gotallItems = allItems.length !== 0 ? true : false;
+  const gotItemList = itemList.length !== 0 ? true : false;
 
   if (isFetching)
     return (
@@ -35,7 +32,7 @@ const TechList = () => {
         <Spinner color="success" />
       </SpinnerDiv>
     );
-  else if (gotallItems)
+  else if (gotItemList)
     return (
       <Container>
         <div>
@@ -54,13 +51,13 @@ const TechList = () => {
           </Form>
         </div>
         <Row>
-          {allItems.map((item) => {
+          {itemList.map((item) => {
             if (
-              item.title &&
-              item.title.toLowerCase().includes(searchTerm.toLowerCase())
+              item.item_name &&
+              item.item_name.toLowerCase().includes(searchTerm.toLowerCase())
             ) {
               return (
-                <Col xs="12" sm="6" md="4" key={item.id}>
+                <Col xs="12" sm="6" md="4" key={item.item_id}>
                   <TechItem item={item} />
                 </Col>
               );
@@ -69,13 +66,13 @@ const TechList = () => {
         </Row>
       </Container>
     );
-  else if (!gotallItems)
+  else if (!gotItemList)
     return (
       <Container style={{ margin: "50px auto" }}>
         <Row>
           <Col xs="12" lg={{ size: 4, offset: 4 }}>
             <Card>
-              <CardBody>No recipes yet?</CardBody>
+              <CardBody>Looks like there's nothing listed yet</CardBody>
             </Card>
           </Col>
         </Row>

@@ -22,14 +22,18 @@ const TechCard = ({ item }) => {
     <Card>
       <CardImg top width="100%" src={techitems} alt="Recipe" />
       <CardBody>
-        <CardTitle tag="h5">Title: {item.title}</CardTitle>
+        <CardTitle tag="h5">Title: {item.item_name}</CardTitle>
         <CardSubtitle tag="h5" className="mb-2 text-muted">
-          Owner: {item.owner}
+          {item.owner
+            ? `Owner: ${item.owner}`
+            : item.renter
+            ? `Rented by: ${item.renter}`
+            : "Available"}
         </CardSubtitle>
         <Badge color="dark" pill>
           Category: {item.category}
         </Badge>
-        <CardText>Description: {item.description}</CardText>
+        <CardText>Description: {item.item_description}</CardText>
         <CardSubtitle tag="h5"> Daily Rental: {item.price}</CardSubtitle>
       </CardBody>
 
