@@ -28,7 +28,7 @@ const TechCard = ({ item }) => {
             ? `Owner: ${item.owner}`
             : item.renter
             ? `Rented by: ${item.renter}`
-            : ""}
+            : "Available"}
         </CardSubtitle>
         <Badge color="dark" pill>
           Category: {item.category}
