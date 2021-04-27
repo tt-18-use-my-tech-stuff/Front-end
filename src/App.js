@@ -25,6 +25,7 @@ function App() {
         <Route exact path="/" component={LoginForm} />
         <Route path="/signUp" component={SignUp} />
         <Route path="/addItem" component={AddItem} />
+        <Route path="/items" component={TechList} />
         <Route path="/items" component={TechList}>
           <TechList itemList={DummyData} />
         </Route>
