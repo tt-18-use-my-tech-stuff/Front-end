@@ -4,8 +4,10 @@ import { Switch, Route } from "react-router-dom";
 // import PrivateRoute from "./Components/PrivateRoute";
 import AddItem from "./Components/add_item";
 import TechList from "./Components/TechList";
-import SignUp from "./Components/Signup";
+import SignUp from "./Components/SignupPage";
 import LoginForm from "./Components/LoginForm";
+import { DummyData } from "./Components/MockData/DummyData";
+import LenderDashboard from "./Components/LenderDashboard";
 
 function App() {
   return (
@@ -21,9 +23,13 @@ function App() {
       </Navbar>
       <Switch>
         <Route exact path="/" component={LoginForm} />
-        <Route path="/signUp" component={"SignUp"} />
+        <Route path="/signUp" component={SignUp} />
         <Route path="/addItem" component={AddItem} />
         <Route path="/items" component={TechList} />
+        <Route path="/items" component={TechList}>
+          <TechList itemList={DummyData} />
+        </Route>
+        <Route path="/lenderDashboard" component={LenderDashboard} />
         <Route path="/items/:id" component={"editItem.js"} />
       </Switch>
     </div>
