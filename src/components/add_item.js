@@ -99,29 +99,27 @@ const AddItem = () => {
                 <Input name="name" value={item.name} onChange={inputChange} />
               </label>
 
-      <button disabled={!item.name || !item.description}>Add Item</button>
-      {itemValue()}
-      <p>{errors.name}</p>
-      <p>{errors.description}</p>
-    </form>
-              <label>
-                Description:
-                <Input
-                  name="description"
-                  value={item.description}
-                  onChange={inputChange}
-                />
-              </label>
-              <div>
-                <Button
-                  type="submit"
-                  disabled={!item.name || !item.description}
-                >
-                  Add Item
-                </Button>
-              </div>
+              <button disabled={!item.name || !item.description}>
+                Add Item
+              </button>
               {itemValue()}
+              <p>{errors.name}</p>
+              <p>{errors.description}</p>
             </form>
+            <label>
+              Description:
+              <Input
+                name="description"
+                value={item.description}
+                onChange={inputChange}
+              />
+            </label>
+            <div>
+              <Button type="submit" disabled={!item.name || !item.description}>
+                Add Item
+              </Button>
+            </div>
+            {itemValue()}
           </FormContainer>
         </Col>
       </Row>
