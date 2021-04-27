@@ -88,7 +88,6 @@ const AddItem = () => {
   };
 
   return (
-<<<<<<< HEAD
     <Container>
       <Row>
         <Col xs="12" md={{ size: 6, offset: 3 }}>
@@ -99,66 +98,28 @@ const AddItem = () => {
                 Item Name:
                 <Input name="name" value={item.name} onChange={inputChange} />
               </label>
-
-              <button disabled={!item.name || !item.description}>
-                Add Item
-              </button>
+              <label>
+                Description:
+                <Input
+                  name="description"
+                  value={item.description}
+                  onChange={inputChange}
+                />
+              </label>
+              <div>
+                <Button
+                  type="submit"
+                  disabled={!item.name || !item.description}
+                >
+                  Add Item
+                </Button>
+              </div>
               {itemValue()}
-              <p>{errors.name}</p>
-              <p>{errors.description}</p>
             </form>
-            <label>
-              Description:
-              <Input
-                name="description"
-                value={item.description}
-                onChange={inputChange}
-              />
-            </label>
-            <div>
-              <Button type="submit" disabled={!item.name || !item.description}>
-                Add Item
-              </Button>
-            </div>
-            {itemValue()}
           </FormContainer>
         </Col>
       </Row>
     </Container>
-=======
-  <Container>
-  <Row>
-    <Col xs="12" md={{ size: 6, offset: 3 }}>
-      <FormContainer>
-        <h3>Add an Item</h3>
-        <form onSubmit={onSubmit}>
-          <label>
-            Item Name:
-            <Input name="name" value={item.name} onChange={inputChange} />
-          </label>
-          <label>
-            Description:
-            <Input
-              name="description"
-              value={item.description}
-              onChange={inputChange}
-            />
-          </label>
-          <div>
-            <Button
-              type="submit"
-              disabled={!item.name || !item.description}
-            >
-              Add Item
-            </Button>
-          </div>
-          {itemValue()}
-        </form>
-      </FormContainer>
-    </Col>
-  </Row>
-</Container>
->>>>>>> e8ffbfbf3cbf0dec9126045568c56e89f8be1acc
   );
 };
 
