@@ -24,7 +24,11 @@ const TechCard = ({ item }) => {
       <CardBody>
         <CardTitle tag="h5">Title: {item.title}</CardTitle>
         <CardSubtitle tag="h5" className="mb-2 text-muted">
-          Owner: {item.owner}
+          {item.owner
+            ? `Owner: ${item.owner}`
+            : item.renter
+            ? `Rented by: ${item.renter}`
+            : ""}
         </CardSubtitle>
         <Badge color="dark" pill>
           Category: {item.category}
