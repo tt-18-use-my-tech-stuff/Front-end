@@ -7,8 +7,8 @@ import { Button, Form, Label, Input } from "reactstrap";
 import TechItem from "./TechItem";
 import { DummyData } from "./MockData/DummyData";
 
-const TechList = () => {
-  const [allItems, setAllItems] = useState(DummyData);
+const TechList = ({ itemList }) => {
+  const allItems = itemList ? itemList : DummyData;
 
   const [isFetching, setIsFetching] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");

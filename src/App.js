@@ -6,29 +6,30 @@ import AddItem from "./Components/add_item";
 import TechList from "./Components/TechList";
 import SignUp from "./Components/Signup";
 import LoginForm from "./Components/LoginForm";
-
+import { DummyData } from "./Components/MockData/DummyData";
 
 function App() {
   return (
     <div className="App">
-      <Navbar collapseOnSelect expand="lg" variant="dark" >
+      <Navbar collapseOnSelect expand="lg" variant="dark">
         <Navbar.Brand href="#">Use My Tech Stuff</Navbar.Brand>
-      <Nav >
-        <Nav.Link href="/">Login</Nav.Link>
-        <Nav.Link href="/signUp">Sign Up</Nav.Link>
-        <Nav.Link href="/items">Items</Nav.Link>
-        <Nav.Link href="/addItem">Add Item</Nav.Link>
-      </Nav>
+        <Nav>
+          <Nav.Link href="/">Login</Nav.Link>
+          <Nav.Link href="/signUp">Sign Up</Nav.Link>
+          <Nav.Link href="/items">Items</Nav.Link>
+          <Nav.Link href="/addItem">Add Item</Nav.Link>
+        </Nav>
       </Navbar>
       <Switch>
         <Route exact path="/" component={LoginForm} />
         <Route path="/signUp" component={"SignUp"} />
         <Route path="/addItem" component={AddItem} />
-        <Route path="/items" component={TechList} />
-        <Route path="/items/:id" component ={"editItem.js"} />
+        <Route path="/items" component={TechList}>
+          <TechList itemList={DummyData} />
+        </Route>
+        <Route path="/items/:id" component={"editItem.js"} />
       </Switch>
-
-      </div>
+    </div>
   );
 }
 
