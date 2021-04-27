@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import loginSchema from "../validation/loginSchema";
 import * as yup from "yup";
+import axios from "axios";
+import { useHistory } from 'react-router-dom';
 
 export const useLogin = () => {
   const [user, setUser] = useState({});
@@ -8,6 +10,7 @@ export const useLogin = () => {
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const history = useHistory();
   // console.log('values', values)
 
   useEffect(() => {
@@ -57,6 +60,16 @@ export const useLogin = () => {
     setValues({})
     // setErrors(validate(values))
     // setIsSubmitting(true)
+    axios
+    .post("https://tt18-build-week.herokuapp.com/api/auth/login", values)
+    .then(res => {
+      console.log("successful", res.data)
+      localStorage.setItem('token', res.data.token)
+      history.push("/items") 
+    })
+    .catch(err => {
+      console.log('unsuccesful', err)
+    })
   }
 
   useEffect(() => {

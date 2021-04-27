@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useHistory}  from "react";
 import { useLogin } from "./useLogin";
-// import axios from "axios";
+import axios from "axios";
 import styled from "styled-components";
 import { Container, Row, Col, Button } from "reactstrap";
 import useToken from "../hooks/useToken";
@@ -21,7 +21,62 @@ const Input = styled.input`
 function LoginForm() {
   const [values, errors, handleChange, handleSubmit, isSubmitting] = useLogin();
 
-  // if (user && !user.isAuthenticated) return <Redirect to='/home' />
+// const initialFormValues = {
+//     username: "",
+//     password: "",
+//   };
+// const initialFormErrors = {
+//     username: "",
+//     password: "",
+//   };
+
+// const Login = () => {
+//   const [ formValues, setFormValues ] =  useState(initialFormValues);
+//   const [ formErrors, setFormErrors ] = useState(initialFormErrors)
+//   const [ disabled, setDisabled ] = useState(true);
+//   const history = useHistory()
+//   const loginPost = (newFormValues) => {
+//     axios.post("https://tt18-build-week.herokuapp.com/api/auth/login", newFormValues)
+//     .then(res=>{
+//       console.log("login successful", res.data)
+//       alert(res.data.message)
+//       localStorage.setItem('token', res.data.token)
+//       history.push("/") //add
+//     })
+//     .catch(err=>{
+//       console.log("login unsuccessful: ", err.response)
+//     })
+//   }
+
+
+
+
+
+
+
+  // REDUX
+//  const LOGIN_START = "LOGIN_START";
+//  const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+//  const LOGIN_FAILURE = "LOGIN_FAILURE";
+
+//     const login = (creds) => (dispatch) => {
+//     dispatchEvent({ type: LOGIN_START });
+//     axios
+//     .post("https://tt18-build-week.herokuapp.com/api/auth/login", creds)
+//     .then((res) => {
+//       dispatchEvent({ type: LOGIN_SUCCESS , payload: res.data });
+//     })
+//     .catch((err) => {
+//       dispatchEvent({ type: LOGIN_FAILURE} );
+//     })
+//   }
+
+  
+
+
+
+
+// if (user && !user.isAuthenticated) return <Redirect to='/home' />
 
   return (
     <Container>
