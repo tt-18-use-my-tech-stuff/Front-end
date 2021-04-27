@@ -5,31 +5,33 @@ import TechList from "./TechList";
 const LenderDashboard = (props) => {
   const [itemList, setItemList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [loadError, setLoadError] = useState("");
+  const [loadingError, setLoadingError] = useState("");
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://tt18-build-week.herokuapp.com/api/account/items` /*AUTH */)
-  //     .then((res) => {
-  //       setIsLoading(true);
-  //       console.log(res.data);
-  //       setItemList(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.message);
-  //       setLoadError("Hmmm, looks like something went wrong");
-  //     })
-  //     .finally(() => {
-  //       setIsLoading(false);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get(
+        `https://tt18-build-week.herokuapp.commmmmmm/api/account/items` /*AUTH */
+      )
+      .then((res) => {
+        console.log(res.data);
+        setItemList(res.data);
+        setLoadingError("");
+      })
+      .catch((err) => {
+        console.log(err.message);
+        setLoadingError("Hmmm, looks like something went wrong");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
 
   return (
     <div>
       {isLoading ? (
         "L O A D I N G"
-      ) : itemList === [] ? (
-        "Looks like you haven't listed anything yet"
+      ) : loadingError ? (
+        loadingError
       ) : (
         <TechList itemList={itemList} />
       )}

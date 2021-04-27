@@ -7,6 +7,7 @@ import TechList from "./Components/TechList";
 import SignUp from "./Components/SignupPage";
 import LoginForm from "./Components/LoginForm";
 import { DummyData } from "./Components/MockData/DummyData";
+import LenderDashboard from "./Components/LenderDashboard";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/items" component={TechList}>
           <TechList itemList={DummyData} />
         </Route>
+        <Route path="/lenderDashboard" component={LenderDashboard} />
         <Route path="/items/:id" component={"editItem.js"} />
       </Switch>
     </div>

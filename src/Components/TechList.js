@@ -72,7 +72,7 @@ const TechList = ({ itemList }) => {
         <Row>
           <Col xs="12" lg={{ size: 4, offset: 4 }}>
             <Card>
-              <CardBody>No recipes yet?</CardBody>
+              <CardBody>Looks like there's nothing listed yet</CardBody>
             </Card>
           </Col>
         </Row>
