@@ -2,34 +2,71 @@ import React from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { useLogin } from "./useLogin";
 // import axios from "axios";
+import styled from "styled-components";
+import { Container, Row, Col, Button } from "reactstrap";
+
+const FormContainer = styled.div`
+  margin-top: 150px;
+  width: 100%;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid #d5d5d5;
+  border-radius: 5px;
+  margin-bottom: 15px;
+`;
 
 function LoginForm() {
   const [values, errors, handleChange, handleSubmit, isSubmitting] = useLogin();
 
   // if (user && !user.isAuthenticated) return <Redirect to='/home' />
-  // const [test, setTest] = useLocalStorage("testy");
 
   return (
-    <div className="login-wrapper">
-      {/* <button onClick={setTest("e")} /> */}
-      <h3>Log In Here</h3>
-      <form>
-        <label>
-          Username
-          <input type="text" name="username" onChange={handleChange} />
-        </label>
-        <label>
-          Password
-          <input type="password" name="password" onChange={handleChange} />
-        </label>
+    <Container>
+      <Row>
+        <Col xs="12" md={{ size: 6, offset: 3 }}>
+          <FormContainer>
+            <div className="login-wrapper">
+              <h3>Log In Here</h3>
+              <form>
+                <div>
+                  <label>
+                    Username
+                    <Input
+                      type="text"
+                      name="username"
+                      onChange={handleChange}
+                    />
+                  </label>
+                </div>
+                <div>
+                  <label>
+                    Password
+                    <Input
+                      type="password"
+                      name="password"
+                      onChange={handleChange}
+                    />
+                  </label>
+                </div>
 
-        <div>
-          <button disabled={isSubmitting} type="submit" onClick={handleSubmit}>
-            Submit
-          </button>
-        </div>
-      </form>
-    </div>
+                <div>
+                  <Button
+                    disabled={isSubmitting}
+                    type="submit"
+                    onClick={handleSubmit}
+                  >
+                    Submit
+                  </Button>
+                </div>
+              </form>
+            </div>
+          </FormContainer>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
