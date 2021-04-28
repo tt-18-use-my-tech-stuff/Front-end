@@ -9,7 +9,6 @@ const LenderDashboard = (props) => {
   const [loadingError, setLoadingError] = useState("");
 
   useEffect(() => {
-    debugger;
     axiosWithAuth()
       .get(`/account/items`)
       .then((res) => {
