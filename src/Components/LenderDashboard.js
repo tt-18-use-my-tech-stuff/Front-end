@@ -9,6 +9,7 @@ const LenderDashboard = (props) => {
   const [loadingError, setLoadingError] = useState("");
 
   useEffect(() => {
+    debugger;
     axiosWithAuth()
       .get(`/account/items`)
       .then((res) => {
@@ -16,8 +17,9 @@ const LenderDashboard = (props) => {
         if (Array.isArray(res.data)) {
           setItemList(res.data);
           setLoadingError("");
+        } else {
+          setLoadingError(res.data);
         }
-        setLoadingError(res.data);
       })
       .catch((err) => {
         console.log(err.message);
@@ -37,8 +39,7 @@ const LenderDashboard = (props) => {
       ) : (
         <TechList itemList={itemList} />
       )}
-      {/* 
-      <TechList
+      {/* <TechList
         itemList={[
           {
             item_id: 1,
@@ -46,14 +47,8 @@ const LenderDashboard = (props) => {
             item_description: "New TV. Remote not included",
             renter: "Thor",
           },
-          {
-            item_id: 4,
-            item_name: "Speakers",
-            item_description: "Powered bookshelf speakers.",
-            renter: null,
-          },
-        ]}
-      /> */}
+        ]} */}
+      />
     </div>
   );
 };
