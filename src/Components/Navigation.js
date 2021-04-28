@@ -24,6 +24,15 @@ const Navigation = () => {
           <NavItem>
             <NavLink
               tag={Link}
+              to="/profile"
+              className={location.pathname === "/profile" ? "active" : ""}
+            >
+              My Profile
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              tag={Link}
               to="/items"
               className={location.pathname === "/items" ? "active" : ""}
             >
