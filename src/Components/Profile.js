@@ -21,25 +21,17 @@ import {
 
 function Profile() {
   const [activeTab, setActiveTab] = useState("1");
+  const [funMessage, setFunMessage] = useState("");
 
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
 
-  return (
-    // <div>
-    //     <h1>Your Account</h1>
-    //     <div>
-    //         <h3>Edit Account</h3>
-    //     </div>
-    //     <div>
-    //         <h3>Items Rented</h3>
-    //     </div>
-    //     <div>
-    //         <h3>Items Own</h3>
-    //     </div>
+  const handleClick = () => {
+    setFunMessage(<h1> 🔥🎊🎊🎊🙌 🙌 🥳🥳🙌 🙌 🎉🎉🙌🙌🎊🎊🎊🔥</h1>);
+  };
 
-    // </div>
+  return (
     <div>
       <Nav tabs>
         <NavItem>
@@ -118,6 +110,7 @@ function Profile() {
             </Col>
           </Row>
         </TabPane>
+
         <TabPane tabId="4">
           <Row>
             <Col sm="12">
@@ -129,29 +122,28 @@ function Profile() {
 
         <TabPane tabId="5">
           <Row>
-            <Col sm="6">
+            <Col sm="">
               <Card body>
-                <CardTitle>Special Title Treatment</CardTitle>
+                <CardTitle>#tt_webft_18</CardTitle>
                 <CardText>
-                  With supporting text below as a natural lead-in to additional
-                  content.
+                  Think #tt_webft_18 is the best track team at lambda?
                 </CardText>
-                <Button>Go somewhere</Button>
+                <Button onClick={handleClick}>Click if you agree!</Button>
               </Card>
             </Col>
-            <Col sm="6">
+            <Col sm="">
               <Card body>
-                <CardTitle>Special Title Treatment</CardTitle>
+                <CardTitle>#tt_webft_18</CardTitle>
                 <CardText>
-                  With supporting text below as a natural lead-in to additional
-                  content.
+                  Think #tt_webft_18 is the best track team at lambda?
                 </CardText>
-                <Button>Go somewhere</Button>
+                <Button onClick={handleClick}>Click if you agree!</Button>
               </Card>
             </Col>
           </Row>
         </TabPane>
       </TabContent>
+      {funMessage}
     </div>
   );
 }
