@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { axiosWithAuth } from "./helpers/axiosWithAuth";
 import TechList from "./TechList";
@@ -7,33 +8,39 @@ const LenderDashboard = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [loadingError, setLoadingError] = useState("");
 
-  // useEffect(() => {
-  //   axiosWithAuth()
-  //     .get(`/account/items`)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setItemList(res.data);
-  //       setLoadingError("");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.message);
-  //       setLoadingError("Hmmm, looks like something went wrong");
-  //     })
-  //     .finally(() => {
-  //       setIsLoading(false);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axiosWithAuth()
+      .get(`/account/items`)
+      .then((res) => {
+        debugger;
+        console.log(res.data);
+        if (Array.isArray(res.data)) {
+          setItemList(res.data);
+          setLoadingError("");
+        }
+        setLoadingError(res.data);
+      })
+      .catch((err) => {
+        debugger;
+        console.log(err.message);
+        setLoadingError("Hmmm, looks like something went wrong");
+      })
+      .finally(() => {
+        debugger;
+        setIsLoading(false);
+      });
+  }, []);
 
   return (
     <div>
-      {/* {isLoading ? (
+      {isLoading ? (
         "L O A D I N G"
       ) : loadingError ? (
         loadingError
       ) : (
-      <TechList itemList={itemList} />
-     )} */}
-
+        <TechList itemList={itemList} />
+      )}
+      {/* 
       <TechList
         itemList={[
           {
@@ -49,7 +56,7 @@ const LenderDashboard = (props) => {
             renter: null,
           },
         ]}
-      />
+      /> */}
     </div>
   );
 };
