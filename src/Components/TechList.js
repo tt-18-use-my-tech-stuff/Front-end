@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Card, CardBody } from "reactstrap";
 import { SpinnerDiv, Spinner } from "./styled-components/spinner";
-// import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import { axiosWithAuth } from "./helpers/axiosWithAuth";
 import { Button, Form, Label, Input } from "reactstrap";
 import TechItem from "./TechItem";
 import { DummyData } from "../Components/MockData/DummyData";
 
 const TechList = () => {
-  const itemList = DummyData;
-  const [isFetching, setIsFetching] = useState(false);
+  const [itemList, setItemList] = useState([]);
+  const [isFetching, setIsFetching] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
 
   //console.log(userId)
@@ -22,16 +22,26 @@ const TechList = () => {
     event.preventDefault();
   };
 
-  //   useEffect(() => {
-
-  //   }, []);
+  useEffect(() => {
+    axiosWithAuth()
+      .get("https://tt18-build-week.herokuapp.com/api/items/available")
+      .then((res) => {
+        console.log(res);
+        setItemList(res.data);
+        setIsFetching(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsFetching(false);
+      });
+  }, []);
 
   const gotItemList = itemList.length !== 0 ? true : false;
 
   if (isFetching)
     return (
       <SpinnerDiv>
-        <Spinner color="success" />
+        <Spinner color="info" />
       </SpinnerDiv>
     );
   else if (gotItemList)

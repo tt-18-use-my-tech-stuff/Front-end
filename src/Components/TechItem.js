@@ -14,13 +14,16 @@ import {
 import techitems from "../img/techitems.jpg";
 import { useHistory } from "react-router";
 import { axiosWithAuth } from "./helpers/axiosWithAuth";
+import { useParams } from "react-router-dom";
 
 const Card = styled(ReactCard)`
   margin-bottom: 50px;
 `;
 
 const TechCard = ({ item }) => {
+  // const { push } = useHistory();
   const history = useHistory();
+  // const params = useParams();
   const routeToItem = (e) => {
     e.preventDefault();
     history.push(`/items/${item.item_id}`);
@@ -36,13 +39,25 @@ const TechCard = ({ item }) => {
   if (item.owner) {
     //\/\/\/\/\/\/\/\/\/\ Borrowers /\/\/\/\/\/\/\/\/\/\\
     subtitle = `Owner: ${item.owner}`;
-    // handleSafeClick = () => {
+    // handleSafeClick = (e) => {
     //   /*more details, photos */
+    //   e.preventDefault();
+    //   history.push(`/items/${item.item_id}`);
     // };
     handleScaryClick = () => {
-      /*
-      post item request
-       */
+      if (confirm("request")) {
+        axiosWithAuth()
+          .post(`/requests`, item.item_id)
+          .then((res) => {
+            console.log(res.data);
+            alert(`You're request is ${res.data.status}.`);
+          })
+          .catch((err) => {
+            console.log(err.message);
+            alert("Hmmm looks like something went wrong. Try again later.");
+          })
+          .finally(() => {});
+      }
     };
     safeButtonText = "View Item";
     scaryButtonText = "Request Item";
@@ -50,7 +65,8 @@ const TechCard = ({ item }) => {
     //\/\/\/\/\/\/\/\/\/\ Lenders /\/\/\/\/\/\/\/\/\/\\
     subtitle = item.renter ? `Rented by: ${item.renter}` : "Available";
     // handleSafeClick = () => {
-    //   push(`/items/${item.item_id}`);
+    //   console.log(item);
+    //   history.push(`/items/${item.item_id}`);
     // };
 
     handleScaryClick = () => {
