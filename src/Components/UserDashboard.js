@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { axiosWithAuth } from "./helpers/axiosWithAuth";
+// import { axiosWithAuth } from "./helpers/axiosWithAuth";
 import { Col, Container } from "reactstrap";
+import {Navbar, Nav, Form, FormControl, Button} from "react-bootstrap";
 import { requestData } from "./MockData/RequestData";
 import RequestCard from "./RequestCard";
 
@@ -20,20 +21,19 @@ function UserDashboard () {
     }, [])
     return(
         <div>
-        <header>
-            <h1>Your Items</h1>
-            <input
-                placeholder="Search"
-            />
-            <button>Search</button>
-        </header>
-        <nav>
-            <ul>
-                <li>Request</li>
-                <li>Pending Request</li>
-                <li>Rent Again</li>
-            </ul>
-        </nav>
+        <Navbar bg="light" variant="light">
+            <Navbar.Brand >Your Items</Navbar.Brand>
+                <Nav className="mr-auto">
+                <Nav.Link >Request</Nav.Link>
+                <Nav.Link href="/pending">Pending Request</Nav.Link>
+                <Nav.Link href="/request-again">Rent Again</Nav.Link>
+            </Nav>
+            <Form inline>
+                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                <Button variant="outline-primary">Search</Button> 
+            </Form>
+        </Navbar>
+        {requests ?
         <Container >
             {requests.map((request)=>{
 
@@ -42,6 +42,7 @@ function UserDashboard () {
                 </Col>)
             })}
         </Container >
+        : <p>You have not placed any requests</p>}
         </div>
     )
 }
