@@ -37,9 +37,19 @@ const TechCard = ({ item }) => {
       /*more details, photos */
     };
     handleScaryClick = () => {
-      /*
-      post item request
-       */
+      if (confirm("request")) {
+        axiosWithAuth()
+          .post(`/requests`, item.item_id)
+          .then((res) => {
+            console.log(res.data);
+            alert(`You're request is ${res.data.status}.`);
+          })
+          .catch((err) => {
+            console.log(err.message);
+            alert("Hmmm looks like something went wrong. Try again later.");
+          })
+          .finally(() => {});
+      }
     };
     safeButtonText = "View Item";
     scaryButtonText = "Request Item";
