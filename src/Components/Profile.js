@@ -5,20 +5,15 @@ function Profile () {
         <div>
             <h1>Your Account</h1>
             <div>
-                <h1></h1>
+                <h3>Edit Account</h3>
             </div>
             <div>
-                <h1></h1>
-
+                <h3>Items Rented</h3>
             </div>
             <div>
-            <h1></h1>
-
-            </div>
-            <div>
-            <h1></h1>
-
+                <h3>Items Own</h3>
             </div>
         </div>
     )
 }
+export default Profile;

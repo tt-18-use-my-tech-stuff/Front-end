@@ -12,7 +12,7 @@ const ItemEdit = () => {
     const [ itemDescription, setItemDescription ] = useState({});
 
     useEffect(() => {
-        axiosWithAuth()
+        axiosWithAuth(`https://tt18-build-week.herokuapp.com/api/items/${id}`)
         .get() // add
         .then((res) => {
             console.log("item edit response", res.data);

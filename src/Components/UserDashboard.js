@@ -22,11 +22,11 @@ function UserDashboard () {
     return(
         <div>
         <Navbar bg="light" variant="light">
-            <Navbar.Brand >Your Items</Navbar.Brand>
+            <Navbar.Brand >Dashboard</Navbar.Brand>
                 <Nav className="mr-auto">
                 <Nav.Link >Request</Nav.Link>
-                <Nav.Link href="/pending">Pending Request</Nav.Link>
-                <Nav.Link href="/request-again">Rent Again</Nav.Link>
+                {/* <Nav.Link href="/pending">Pending Request</Nav.Link>
+                <Nav.Link href="/request-again">Rent Again</Nav.Link> */}
             </Nav>
             <Form inline>
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />

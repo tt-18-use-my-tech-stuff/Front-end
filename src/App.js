@@ -12,6 +12,8 @@ import LenderDashboard from "./Components/LenderDashboard";
 import UserDashboard from "./Components/UserDashboard";
 import Navigation from "./Components/Navigation";
 import HomePage from "./Components/HomePage";
+import Profile from "./Components/Profile";
+import EditAccount from "./Components/EditAccount";
 
 function App() {
   return (
@@ -24,13 +26,14 @@ function App() {
         <Route path="/login" component={LoginForm} />
         <Route path="/signUp" component={SignUp} />
         <Route path="/addItem" component={AddItem} />
-
+        <Route path="/lenderDashboard" component={LenderDashboard} />
+        <Route path="/userDashboard" component={UserDashboard} />
+        <Route path="/editAccount" component={EditAccount} />
+        <Route path="/profile" component={Profile} /> 
+        <Route path="/items/:id" component={"editItem.js"} />
         <Route path="/items">
           <TechList itemList={DummyData} />
         </Route>
-        <Route path="/lenderDashboard" component={LenderDashboard} />
-        <Route path="/userDashboard" component={UserDashboard} /> 
-        <Route path="/items/:id" component={"editItem.js"} />
       </Switch>
     </div>
   );

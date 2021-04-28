@@ -20,12 +20,15 @@ const Card = styled(ReactCard)`
 `;
 
 const TechCard = ({ item }) => {
-  const { push } = useHistory();
-
+  const history = useHistory();
+  const routeToItem = (e) => {
+    e.preventDefault();
+    history.push(`/items/${item.item_id}`);
+  };
   const confirm = (action) =>
     window.confirm(`Are you sure you want to ${action} ${item.item_name}`);
   //\/\/\/\/\/\/\/\/\/\ CONDITIONAL RENDER LOGIC /\/\/\/\/\/\/\/\/\/\\
-  let handleSafeClick;
+  // let handleSafeClick;
   let handleScaryClick;
   let safeButtonText;
   let scaryButtonText;
@@ -33,9 +36,9 @@ const TechCard = ({ item }) => {
   if (item.owner) {
     //\/\/\/\/\/\/\/\/\/\ Borrowers /\/\/\/\/\/\/\/\/\/\\
     subtitle = `Owner: ${item.owner}`;
-    handleSafeClick = () => {
-      /*more details, photos */
-    };
+    // handleSafeClick = () => {
+    //   /*more details, photos */
+    // };
     handleScaryClick = () => {
       /*
       post item request
@@ -46,9 +49,9 @@ const TechCard = ({ item }) => {
   } else {
     //\/\/\/\/\/\/\/\/\/\ Lenders /\/\/\/\/\/\/\/\/\/\\
     subtitle = item.renter ? `Rented by: ${item.renter}` : "Available";
-    handleSafeClick = () => {
-      push(`/items/${item.item_id}`);
-    };
+    // handleSafeClick = () => {
+    //   push(`/items/${item.item_id}`);
+    // };
 
     handleScaryClick = () => {
       if (confirm("DELETE")) {
@@ -84,7 +87,7 @@ const TechCard = ({ item }) => {
       </CardBody>
 
       <CardBody>
-        <Button onClick={handleSafeClick}>{safeButtonText}</Button>
+        <Button onClick={routeToItem}>{safeButtonText}</Button>
         <Button onClick={() => handleScaryClick()}>{scaryButtonText}</Button>
       </CardBody>
     </Card>
