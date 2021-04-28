@@ -42,9 +42,17 @@ const ItemPage = () => {
 
   const routeToItemEdit = (item) => {
     console.log("edit item button");
+    history.push(`/editItem/${item_id}`);
   };
   const deleteItem = (id) => {
     console.log("delete item button");
+    axiosWithAuth()
+      .delete(`https://tt18-build-week.herokuapp.com/api/items/${item_id}`)
+      .then((res) => {
+        console.log("Delete:", res.data.message);
+        history.push("/items");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -96,7 +104,7 @@ const ItemPage = () => {
                     >
                       Edit Item
                     </Button>
-                    <Button color="danger" onClick={() => deleteItem()}>
+                    <Button color="danger" onClick={() => deleteItem(item_id)}>
                       Delete Item
                     </Button>
                     <Button
