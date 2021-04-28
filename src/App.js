@@ -10,6 +10,7 @@ import { DummyData } from "./Components/MockData/DummyData";
 import LenderDashboard from "./Components/LenderDashboard";
 import Navigation from "./Components/Navigation";
 import HomePage from "./Components/HomePage";
+import ItemPage from "./Components/ItemPage";
 
 function App() {
   return (
@@ -23,11 +24,12 @@ function App() {
         <Route path="/signUp" component={SignUp} />
         <Route path="/addItem" component={AddItem} />
 
+        <Route path="/lenderDashboard" component={LenderDashboard} />
+        <Route path="/editItem/:item_id" component={"editItem.js"} />
+        <Route path="/items/:item_id" component={ItemPage} />
         <Route path="/items">
           <TechList itemList={DummyData} />
         </Route>
-        <Route path="/lenderDashboard" component={LenderDashboard} />
-        <Route path="/items/:id" component={"editItem.js"} />
       </Switch>
     </div>
   );
