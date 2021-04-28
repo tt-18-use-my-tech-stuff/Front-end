@@ -14,13 +14,20 @@ import {
 import techitems from "../img/techitems.jpg";
 import { useHistory } from "react-router";
 import { axiosWithAuth } from "./helpers/axiosWithAuth";
+import { useParams } from "react-router-dom";
 
 const Card = styled(ReactCard)`
   margin-bottom: 50px;
 `;
 
 const TechCard = ({ item }) => {
-  const { push } = useHistory();
+  // const { push } = useHistory();
+  const history = useHistory();
+  // const params = useParams();
+  const routeToItem = (e) => {
+    e.preventDefault();
+    history.push(`/items/${item.item_id}`);
+  };
 
   const confirm = (action) =>
     window.confirm(`Are you sure you want to ${action} ${item.item_name}`);
@@ -33,8 +40,10 @@ const TechCard = ({ item }) => {
   if (item.owner) {
     //\/\/\/\/\/\/\/\/\/\ Borrowers /\/\/\/\/\/\/\/\/\/\\
     subtitle = `Owner: ${item.owner}`;
-    handleSafeClick = () => {
+    handleSafeClick = (e) => {
       /*more details, photos */
+      e.preventDefault();
+      history.push(`/items/${item.item_id}`);
     };
     handleScaryClick = () => {
       if (confirm("request")) {
@@ -57,7 +66,8 @@ const TechCard = ({ item }) => {
     //\/\/\/\/\/\/\/\/\/\ Lenders /\/\/\/\/\/\/\/\/\/\\
     subtitle = item.renter ? `Rented by: ${item.renter}` : "Available";
     handleSafeClick = () => {
-      push(`/items/${item.item_id}`);
+      console.log(item);
+      history.push(`/items/${item.item_id}`);
     };
 
     handleScaryClick = () => {
@@ -94,7 +104,7 @@ const TechCard = ({ item }) => {
       </CardBody>
 
       <CardBody>
-        <Button onClick={handleSafeClick}>{safeButtonText}</Button>
+        <Button onClick={routeToItem}>{safeButtonText}</Button>
         <Button onClick={() => handleScaryClick()}>{scaryButtonText}</Button>
       </CardBody>
     </Card>
