@@ -24,27 +24,25 @@ const TechCard = ({ item }) => {
   // const { push } = useHistory();
   const history = useHistory();
   // const params = useParams();
-  const routeToItem = (e) => {
-    e.preventDefault();
-    history.push(`/items/${item.item_id}`);
-  };
   const confirm = (action) =>
     window.confirm(`Are you sure you want to ${action} ${item.item_name}`);
   //\/\/\/\/\/\/\/\/\/\ CONDITIONAL RENDER LOGIC /\/\/\/\/\/\/\/\/\/\\
-  // let handleSafeClick;
+  // Declaring variables to be conditionally defined
+  let handleSafeClick;
   let handleScaryClick;
   let safeButtonText;
   let scaryButtonText;
   let subtitle;
   if (item.owner) {
-    //\/\/\/\/\/\/\/\/\/\ Borrowers /\/\/\/\/\/\/\/\/\/\\
+    //\/\/\/\/\/\/\/\/\/\ If the item is being viewed as a borrower /\/\/\/\/\/\/\/\/\/\\
     subtitle = `Owner: ${item.owner}`;
-    // handleSafeClick = (e) => {
-    //   /*more details, photos */
-    //   e.preventDefault();
-    //   history.push(`/items/${item.item_id}`);
-    // };
+    handleSafeClick = (e) => {
+      // routes to item detail page
+      e.preventDefault();
+      history.push(`/items/${item.item_id}`);
+    };
     handleScaryClick = () => {
+      // requests the item after confirmation
       if (confirm("request")) {
         axiosWithAuth()
           .post(`/requests`, item.item_id)
@@ -62,14 +60,16 @@ const TechCard = ({ item }) => {
     safeButtonText = "View Item";
     scaryButtonText = "Request Item";
   } else {
-    //\/\/\/\/\/\/\/\/\/\ Lenders /\/\/\/\/\/\/\/\/\/\\
+    //\/\/\/\/\/\/\/\/\/\ else if the item is being viewed as a lender /\/\/\/\/\/\/\/\/\/\\
     subtitle = item.renter ? `Rented by: ${item.renter}` : "Available";
-    // handleSafeClick = () => {
-    //   console.log(item);
-    //   history.push(`/items/${item.item_id}`);
-    // };
+    handleSafeClick = () => {
+      // routes (in theory) to edit item page
+      console.log(item);
+      history.push(`/items/${item.item_id}`);
+    };
 
     handleScaryClick = () => {
+      // deletes item from database after confirmation
       if (confirm("DELETE")) {
         axiosWithAuth()
           .delete(`items/${item.item_id}`)
@@ -103,8 +103,8 @@ const TechCard = ({ item }) => {
       </CardBody>
 
       <CardBody>
-        <Button onClick={routeToItem}>{safeButtonText}</Button>
-        <Button onClick={() => handleScaryClick()}>{scaryButtonText}</Button>
+        <Button onClick={handleSafeClick}>{safeButtonText}</Button>
+        <Button onClick={handleScaryClick}>{scaryButtonText}</Button>
       </CardBody>
     </Card>
   );
