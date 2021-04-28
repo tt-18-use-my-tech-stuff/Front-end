@@ -36,13 +36,16 @@ const AddItem = () => {
   //Change handler
   const inputChange = (event) => {
     validateItem(event);
-    setItem({ ...item, [event.target.name]: event.target.value });
+    const isPrice = event.target.name === 'price';
+    setItem({ ...item, [event.target.name]: isPrice ? Number(event.target.value) : event.target.value });
   };
+
   //Submit handler
   const onSubmit = (event) => {
     event.preventDefault();
     console.log("New item added");
     console.log(item)
+    
     axiosWithAuth()
       .post("/items", item)
       .then(res=>{
@@ -55,11 +58,12 @@ const AddItem = () => {
     setItem(initialValue);
   };
 
+  
   //Errors state
   const [errors, setErrors] = useState({
     item_name: "",
     item_description: "",
-    price: "",
+    price: 0,
     category: ""
   });
 
@@ -118,15 +122,12 @@ const AddItem = () => {
                   onChange={inputChange}
                 />
               </label>
-              <select name="price" value={item.price} onChange={inputChange}>
-                <option value={3}>3</option>
-              </select>
               <label>
                 Price:
                 <Input
                   name="price"
                   type="number"
-                  value={item.price}
+                  valueAsNumber={item.price}
                   onChange={inputChange}
                 />
               </label>
