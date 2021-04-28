@@ -118,11 +118,14 @@ const AddItem = () => {
                   onChange={inputChange}
                 />
               </label>
+              <select name="price" value={item.price} onChange={inputChange}>
+                <option value={3}>3</option>
+              </select>
               <label>
                 Price:
                 <Input
                   name="price"
-                  type="text"
+                  type="number"
                   value={item.price}
                   onChange={inputChange}
                 />
