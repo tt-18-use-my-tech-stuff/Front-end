@@ -130,6 +130,7 @@ function Profile() {
                 </CardText>
                 <Button onClick={handleClick}>Click if you agree!</Button>
               </Card>
+              {funMessage}
             </Col>
             <Col sm="">
               <Card body>
@@ -139,11 +140,11 @@ function Profile() {
                 </CardText>
                 <Button onClick={handleClick}>Click if you agree!</Button>
               </Card>
+              {funMessage}
             </Col>
           </Row>
         </TabPane>
       </TabContent>
-      {funMessage}
     </div>
   );
 }
