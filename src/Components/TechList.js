@@ -6,9 +6,9 @@ import { axiosWithAuth } from "./helpers/axiosWithAuth";
 import { Button, Form, Label, Input } from "reactstrap";
 import TechItem from "./TechItem";
 
-const TechList = () => {
-  const [itemList, setItemList] = useState([]);
-  const [isFetching, setIsFetching] = useState(true);
+const TechList = ({ itemList, isFetching }) => {
+  // const [itemList, setItemList] = useState([]);
+  // const [isFetching, setIsFetching] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
 
   //console.log(userId)
@@ -21,19 +21,19 @@ const TechList = () => {
     event.preventDefault();
   };
 
-  useEffect(() => {
-    axiosWithAuth()
-      .get("https://tt18-build-week.herokuapp.com/api/items/available")
-      .then((res) => {
-        console.log(res);
-        setItemList(res.data);
-        setIsFetching(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsFetching(false);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axiosWithAuth()
+  //     .get("https://tt18-build-week.herokuapp.com/api/items/available")
+  //     .then((res) => {
+  //       console.log(res);
+  //       setItemList(res.data);
+  //       setIsFetching(false);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       setIsFetching(false);
+  //     });
+  // }, []);
 
   const gotItemList = itemList.length !== 0 ? true : false;
 

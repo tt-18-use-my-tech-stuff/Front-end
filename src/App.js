@@ -11,6 +11,7 @@ import LenderDashboard from "./Components/LenderDashboard";
 import Navigation from "./Components/Navigation";
 import HomePage from "./Components/HomePage";
 import ItemPage from "./Components/ItemPage";
+import AvailableTechList from "./Components/AvailableTechList";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
         <Route path="/editItem/:item_id" component={"editItem.js"} />
         <Route path="/items/:item_id" component={ItemPage} />
         <Route path="/items">
-          <TechList itemList={DummyData} />
+          <AvailableTechList />
         </Route>
       </Switch>
     </div>
