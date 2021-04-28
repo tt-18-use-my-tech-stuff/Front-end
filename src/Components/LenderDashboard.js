@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { axiosWithAuth } from "./helpers/axiosWithAuth";
 import TechList from "./TechList";
 
 const LenderDashboard = (props) => {
@@ -8,10 +8,8 @@ const LenderDashboard = (props) => {
   const [loadingError, setLoadingError] = useState("");
 
   // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `https://tt18-build-week.herokuapp.commmmmmm/api/account/items` /*AUTH */
-  //     )
+  //   axiosWithAuth()
+  //     .get(`/account/items`)
   //     .then((res) => {
   //       console.log(res.data);
   //       setItemList(res.data);
@@ -33,8 +31,8 @@ const LenderDashboard = (props) => {
       ) : loadingError ? (
         loadingError
       ) : (
-        <TechList itemList={itemList} />
-      )} */}
+      <TechList itemList={itemList} />
+     )} */}
 
       <TechList
         itemList={[
