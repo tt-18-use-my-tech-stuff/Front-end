@@ -48,7 +48,8 @@ const TechList = () => {
                 onChange={handleChange}
                 value={searchTerm}
               />
-              <Button type="submit">Search</Button>
+
+              <Button>Search</Button>
             </div>
           </Form>
         </div>

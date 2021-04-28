@@ -12,23 +12,69 @@ import {
   CardText,
 } from "reactstrap";
 import techitems from "../img/techitems.jpg";
+import { useHistory } from "react-router";
+import { axiosWithAuth } from "./helpers/axiosWithAuth";
 
 const Card = styled(ReactCard)`
   margin-bottom: 50px;
 `;
 
 const TechCard = ({ item }) => {
+  const { push } = useHistory();
+
+  const confirm = (action) =>
+    window.confirm(`Are you sure you want to ${action} ${item.item_name}`);
+  //\/\/\/\/\/\/\/\/\/\ CONDITIONAL RENDER LOGIC /\/\/\/\/\/\/\/\/\/\\
+  let handleSafeClick;
+  let handleScaryClick;
+  let safeButtonText;
+  let scaryButtonText;
+  let subtitle;
+  if (item.owner) {
+    //\/\/\/\/\/\/\/\/\/\ Borrowers /\/\/\/\/\/\/\/\/\/\\
+    subtitle = `Owner: ${item.owner}`;
+    handleSafeClick = () => {
+      /*more details, photos */
+    };
+    handleScaryClick = () => {
+      /*
+      post item request
+       */
+    };
+    safeButtonText = "View Item";
+    scaryButtonText = "Request Item";
+  } else {
+    //\/\/\/\/\/\/\/\/\/\ Lenders /\/\/\/\/\/\/\/\/\/\\
+    subtitle = item.renter ? `Rented by: ${item.renter}` : "Available";
+    handleSafeClick = () => {
+      push(`/items/${item.item_id}`);
+    };
+
+    handleScaryClick = () => {
+      if (confirm("DELETE")) {
+        axiosWithAuth()
+          .delete(`items/${item.item_id}`)
+          .then((res) => {
+            console.log(res.data);
+            alert("Deletion Successful");
+          })
+          .catch((err) => {
+            console.log(err.message);
+            alert("Hmmm looks like something went wrong. Try again later.");
+          });
+      }
+    };
+    safeButtonText = "Edit Item";
+    scaryButtonText = "Delete Item";
+  }
+
   return (
     <Card>
       <CardImg top width="100%" src={techitems} alt="Recipe" />
       <CardBody>
         <CardTitle tag="h5">Title: {item.item_name}</CardTitle>
         <CardSubtitle tag="h5" className="mb-2 text-muted">
-          {item.owner
-            ? `Owner: ${item.owner}`
-            : item.renter
-            ? `Rented by: ${item.renter}`
-            : "Available"}
+          {subtitle}
         </CardSubtitle>
         <Badge color="dark" pill>
           Category: {item.category}
@@ -38,7 +84,8 @@ const TechCard = ({ item }) => {
       </CardBody>
 
       <CardBody>
-        <Button>View item</Button>
+        <Button onClick={handleSafeClick}>{safeButtonText}</Button>
+        <Button onClick={() => handleScaryClick()}>{scaryButtonText}</Button>
       </CardBody>
     </Card>
   );

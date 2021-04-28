@@ -14,7 +14,9 @@ const Navigation = () => {
 
   return (
     <Navbar dark>
-      <NavbarBrand className="mr-auto">Use My Tech Stuff</NavbarBrand>
+      <NavbarBrand tag={Link} to="/" className="mr-auto">
+        Use My Tech Stuff
+      </NavbarBrand>
 
       {/* display view recipes, add recipe, and log out if user has token, else display log in and sign up */}
       {localStorage.getItem("token") ? (
