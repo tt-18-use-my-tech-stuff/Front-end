@@ -28,11 +28,10 @@ const TechCard = ({ item }) => {
     e.preventDefault();
     history.push(`/items/${item.item_id}`);
   };
-
   const confirm = (action) =>
     window.confirm(`Are you sure you want to ${action} ${item.item_name}`);
   //\/\/\/\/\/\/\/\/\/\ CONDITIONAL RENDER LOGIC /\/\/\/\/\/\/\/\/\/\\
-  let handleSafeClick;
+  // let handleSafeClick;
   let handleScaryClick;
   let safeButtonText;
   let scaryButtonText;
@@ -40,11 +39,11 @@ const TechCard = ({ item }) => {
   if (item.owner) {
     //\/\/\/\/\/\/\/\/\/\ Borrowers /\/\/\/\/\/\/\/\/\/\\
     subtitle = `Owner: ${item.owner}`;
-    handleSafeClick = (e) => {
-      /*more details, photos */
-      e.preventDefault();
-      history.push(`/items/${item.item_id}`);
-    };
+    // handleSafeClick = (e) => {
+    //   /*more details, photos */
+    //   e.preventDefault();
+    //   history.push(`/items/${item.item_id}`);
+    // };
     handleScaryClick = () => {
       if (confirm("request")) {
         axiosWithAuth()
@@ -65,10 +64,10 @@ const TechCard = ({ item }) => {
   } else {
     //\/\/\/\/\/\/\/\/\/\ Lenders /\/\/\/\/\/\/\/\/\/\\
     subtitle = item.renter ? `Rented by: ${item.renter}` : "Available";
-    handleSafeClick = () => {
-      console.log(item);
-      history.push(`/items/${item.item_id}`);
-    };
+    // handleSafeClick = () => {
+    //   console.log(item);
+    //   history.push(`/items/${item.item_id}`);
+    // };
 
     handleScaryClick = () => {
       if (confirm("DELETE")) {
