@@ -27,19 +27,22 @@ const TechCard = ({ item }) => {
   const confirm = (action) =>
     window.confirm(`Are you sure you want to ${action} ${item.item_name}`);
   //\/\/\/\/\/\/\/\/\/\ CONDITIONAL RENDER LOGIC /\/\/\/\/\/\/\/\/\/\\
+  // Declaring variables to be conditionally defined
   let handleSafeClick;
   let handleScaryClick;
   let safeButtonText;
   let scaryButtonText;
   let subtitle;
   if (item.owner) {
-    //\/\/\/\/\/\/\/\/\/\ Borrowers /\/\/\/\/\/\/\/\/\/\\
+    //\/\/\/\/\/\/\/\/\/\ If the item is being viewed as a borrower /\/\/\/\/\/\/\/\/\/\\
     subtitle = `Owner: ${item.owner}`;
     handleSafeClick = (e) => {
+      // routes to item detail page
       e.preventDefault();
       history.push(`/items/${item.item_id}`);
     };
     handleScaryClick = () => {
+      // requests the item after confirmation
       if (confirm("request")) {
         axiosWithAuth()
           .post(`/requests`, item.item_id)
@@ -57,14 +60,16 @@ const TechCard = ({ item }) => {
     safeButtonText = "View Item";
     scaryButtonText = "Request Item";
   } else {
-    //\/\/\/\/\/\/\/\/\/\ Lenders /\/\/\/\/\/\/\/\/\/\\
+    //\/\/\/\/\/\/\/\/\/\ else if the item is being viewed as a lender /\/\/\/\/\/\/\/\/\/\\
     subtitle = item.renter ? `Rented by: ${item.renter}` : "Available";
     handleSafeClick = () => {
+      // routes (in theory) to edit item page
       console.log(item);
       history.push(`/items/${item.item_id}`);
     };
 
     handleScaryClick = () => {
+      // deletes item from database after confirmation
       if (confirm("DELETE")) {
         axiosWithAuth()
           .delete(`items/${item.item_id}`)
@@ -99,7 +104,7 @@ const TechCard = ({ item }) => {
 
       <CardBody>
         <Button onClick={handleSafeClick}>{safeButtonText}</Button>
-        <Button onClick={() => handleScaryClick()}>{scaryButtonText}</Button>
+        <Button onClick={handleScaryClick}>{scaryButtonText}</Button>
       </CardBody>
     </Card>
   );
