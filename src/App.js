@@ -30,7 +30,7 @@ function App() {
         <Route path="/userDashboard" component={UserDashboard} />
         <Route path="/editAccount" component={EditAccount} />
         <Route path="/profile" component={Profile} /> 
-        <Route path="/items/:id" component={"editItem.js"} />
+        <Route path="/editItem/:id" component={"editItem.js"} />
         <Route path="/items">
           <TechList itemList={DummyData} />
         </Route>
