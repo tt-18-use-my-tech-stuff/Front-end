@@ -5,6 +5,7 @@ import { SpinnerDiv, Spinner } from "./styled-components/spinner";
 import { axiosWithAuth } from "./helpers/axiosWithAuth";
 import { Button, Form, Label, Input } from "reactstrap";
 import TechItem from "./TechItem";
+import { DummyData } from "../Components/MockData/DummyData";
 
 const TechList = ({ itemList, isFetching }) => {
   // const [itemList, setItemList] = useState([]);

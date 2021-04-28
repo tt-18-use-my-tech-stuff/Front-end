@@ -4,6 +4,8 @@ import schema from "../validation/itemSchema";
 import * as yup from "yup";
 import styled from "styled-components";
 import { Container, Row, Col, Button } from "reactstrap";
+import { axiosWithAuth } from "./helpers/axiosWithAuth";
+import { useHistory } from "react-router";
 
 const FormContainer = styled.div`
   margin-top: 150px;
@@ -18,13 +20,18 @@ const Input = styled.input`
   margin-bottom: 15px;
 `;
 
+const initialValue = {
+    item_name: "",
+    item_description: "",
+    price: 0,
+    category: ""
+}
+
 //Component for owner to add an item
 const AddItem = () => {
   //New item state
-  const [item, setItem] = useState({
-    name: "",
-    description: "",
-  });
+  const [item, setItem] = useState(initialValue);
+  const history = useHistory()
 
   //Change handler
   const inputChange = (event) => {
@@ -35,24 +42,25 @@ const AddItem = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     console.log("New item added");
-    alert("New Item Added 🤠");
-    setItem({
-      name: "",
-      description: "",
-    });
-    // axios
-    // .post('url', item)
-    // .then(res => {
-    //     console.log(res);
-    // })
-    // .catch(err => console.log(err))
-    // TODO(Kaseem): add axios for POST
+    console.log(item)
+    axiosWithAuth()
+      .post("/items", item)
+      .then(res=>{
+        alert("New Item Added 🤠");
+        history.push("/items")
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+    setItem(initialValue);
   };
 
   //Errors state
   const [errors, setErrors] = useState({
-    name: "",
-    description: "",
+    item_name: "",
+    item_description: "",
+    price: "",
+    category: ""
   });
 
   //Validation
@@ -76,16 +84,16 @@ const AddItem = () => {
   };
 
   //logic for displaying added items on screen
-  let itemValue = () => {
-    if (item.name !== "" && item.description !== "") {
-      return (
-        <div>
-          <p>{item.name}</p>
-          <p>{item.description}</p>
-        </div>
-      );
-    }
-  };
+  // let itemValue = () => {
+  //   if (item.name !== "" && item.description !== "") {
+  //     return (
+  //       <div>
+  //         <p>{item.name}</p>
+  //         <p>{item.description}</p>
+  //       </div>
+  //     );
+  //   }
+  // };
 
   return (
     <Container>
@@ -96,25 +104,49 @@ const AddItem = () => {
             <form onSubmit={onSubmit}>
               <label>
                 Item Name:
-                <Input name="name" value={item.name} onChange={inputChange} />
+                <Input 
+                  name="item_name" 
+                  value={item.item_name} 
+                  onChange={inputChange} />
               </label>
               <label>
                 Description:
                 <Input
-                  name="description"
-                  value={item.description}
+                  name="item_description"
+                  type="text"
+                  value={item.item_description}
+                  onChange={inputChange}
+                />
+              </label>
+              <select name="price" value={item.price} onChange={inputChange}>
+                <option value={3}>3</option>
+              </select>
+              <label>
+                Price:
+                <Input
+                  name="price"
+                  type="number"
+                  value={item.price}
+                  onChange={inputChange}
+                />
+              </label>
+              <label>
+                Category:
+                <Input
+                  name="category"
+                  type="text"
+                  value={item.category}
                   onChange={inputChange}
                 />
               </label>
               <div>
                 <Button
                   type="submit"
-                  disabled={!item.name || !item.description}
+                  disabled={!item.item_name || !item.item_description}
                 >
                   Add Item
                 </Button>
               </div>
-              {itemValue()}
             </form>
           </FormContainer>
         </Col>
