@@ -9,7 +9,7 @@ import LoginForm from "./Components/LoginForm";
 import {DummyData} from "./Components/MockData/DummyData"
 import LenderDashboard from "./Components/LenderDashboard";
 import Navigation from "./Components/Navigation";
-import PrivateRoute from "./Components/PrivateRoute";
+import UserDashboard from "./Components/UserDashboard";
 
 function App() {
   return (
@@ -33,6 +33,7 @@ function App() {
           <TechList itemList={DummyData} />
         </Route>
         <Route path="/lenderDashboard" component={LenderDashboard} />
+        <Route path="/userDashboard" component={UserDashboard} /> 
         <Route path="/items/:id" component={"editItem.js"} />
       </Switch>
     </div>
