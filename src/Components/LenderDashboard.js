@@ -12,7 +12,6 @@ const LenderDashboard = (props) => {
     axiosWithAuth()
       .get(`/account/items`)
       .then((res) => {
-        debugger;
         console.log(res.data);
         if (Array.isArray(res.data)) {
           setItemList(res.data);
@@ -21,12 +20,10 @@ const LenderDashboard = (props) => {
         setLoadingError(res.data);
       })
       .catch((err) => {
-        debugger;
         console.log(err.message);
         setLoadingError("Hmmm, looks like something went wrong");
       })
       .finally(() => {
-        debugger;
         setIsLoading(false);
       });
   }, []);
