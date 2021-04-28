@@ -9,6 +9,7 @@ import {
   CardBody,
   CardImg,
   Button,
+  Badge,
 } from "reactstrap";
 import { axiosWithAuth } from "./helpers/axiosWithAuth";
 import { useHistory } from "react-router-dom";
@@ -28,13 +29,12 @@ const ItemPage = () => {
   const { item_id } = useParams();
   const [item, setItem] = useState({});
   const history = useHistory();
-  console.log(item_id);
 
   useEffect(() => {
     axiosWithAuth()
       .get(`/items/${item_id}`)
       .then((res) => {
-        console.log(item_id);
+        console.log(res);
         setItem(res.data);
       })
       .catch((err) => console.log(err));
@@ -51,47 +51,64 @@ const ItemPage = () => {
     <div className="itemPageContainer">
       <Container>
         <Row>
-          <Col xs={{ size: 8, offset: 2 }}>
-            <Card>
-              <CardImg src={TechPic} alt="techItems-image" />
-              <CardBody className="text-center">
-                <Title>
-                  <h2>{item.item_name}</h2>
-                  <p>from {item.owner}</p>
-                </Title>
-                <Title>
-                  <h5>item_description</h5>
-                  <p>{item.item_description}</p>
-                </Title>
-                <Title>
-                  <h5>price</h5>
-                  <p>{item.price}</p>
-                </Title>
-                <Title>
-                  <h5>category</h5>
-                  <p>{item.category}</p>
-                </Title>
+          <Col xs={{ size: 6, offset: 3 }}>
+            <div className="itemPageCard">
+              <Card>
+                <CardImg src={TechPic} alt="techItems-image" />
+                <CardBody className="text-center">
+                  <Title>
+                    <Badge color="dark" pill>
+                      Name:
+                    </Badge>
+                    <h1>{item.item_name}</h1>
 
-                <BtnContainer>
-                  <Button
-                    color="primary"
-                    onClick={(e) => routeToItemEdit(item)}
-                    key={item.id}
-                  >
-                    Edit Item
-                  </Button>
-                  <Button color="danger" onClick={() => deleteItem()}>
-                    Delete Item
-                  </Button>
-                  <Button
-                    color="primary"
-                    onClick={() => history.push("/items")}
-                  >
-                    Return
-                  </Button>
-                </BtnContainer>
-              </CardBody>
-            </Card>
+                    {/* <p>from {item.owner}</p> */}
+                  </Title>
+                  <Title>
+                    <Badge color="dark" pill>
+                      Category:
+                    </Badge>
+
+                    <h3>{item.category}</h3>
+                  </Title>
+                  <Title>
+                    <Badge color="dark" pill>
+                      Description:
+                    </Badge>
+                    <h3>{item.item_description}</h3>
+                  </Title>
+                  <Title>
+                    {/* <h5>price</h5>
+                    <h3>{item.price}</h3> */}
+                    <Badge color="dark" pill>
+                      Daily Price:
+                    </Badge>
+                    <h1>
+                      <Badge color="warning">${item.price}</Badge>
+                    </h1>
+                  </Title>
+
+                  <BtnContainer>
+                    <Button
+                      color="primary"
+                      onClick={(e) => routeToItemEdit(item)}
+                      key={item.id}
+                    >
+                      Edit Item
+                    </Button>
+                    <Button color="danger" onClick={() => deleteItem()}>
+                      Delete Item
+                    </Button>
+                    <Button
+                      color="success"
+                      onClick={() => history.push("/items")}
+                    >
+                      Return
+                    </Button>
+                  </BtnContainer>
+                </CardBody>
+              </Card>
+            </div>
           </Col>
         </Row>
       </Container>

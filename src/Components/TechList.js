@@ -40,7 +40,7 @@ const TechList = () => {
   if (isFetching)
     return (
       <SpinnerDiv>
-        <Spinner color="success" />
+        <Spinner color="info" />
       </SpinnerDiv>
     );
   else if (gotItemList)
