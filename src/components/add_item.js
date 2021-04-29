@@ -21,50 +21,54 @@ const Input = styled.input`
 `;
 
 const initialValue = {
-    item_name: "",
-    item_description: "",
-    price: 0,
-    category: ""
-}
+  item_name: "",
+  item_description: "",
+  price: 0,
+  category: "",
+};
 
 //Component for owner to add an item
 const AddItem = () => {
   //New item state
   const [item, setItem] = useState(initialValue);
-  const history = useHistory()
+  const history = useHistory();
 
   //Change handler
   const inputChange = (event) => {
     validateItem(event);
-    const isPrice = event.target.name === 'price';
-    setItem({ ...item, [event.target.name]: isPrice ? Number(event.target.value) : event.target.value });
+    const isPrice = event.target.name === "price";
+    setItem({
+      ...item,
+      [event.target.name]: isPrice
+        ? Number(event.target.value)
+        : event.target.value,
+    });
   };
 
   //Submit handler
   const onSubmit = (event) => {
     event.preventDefault();
     console.log("New item added");
-    console.log(item)
-    
+    console.log(item);
+
     axiosWithAuth()
       .post("/items", item)
-      .then(res=>{
+      .then((res) => {
         alert("New Item Added 🤠");
-        history.push("/items")
+        history.push("/items");
       })
-      .catch(err=>{
-        console.log(err)
-      })
+      .catch((err) => {
+        console.log(err.response);
+      });
     setItem(initialValue);
   };
 
-  
   //Errors state
   const [errors, setErrors] = useState({
     item_name: "",
     item_description: "",
     price: 0,
-    category: ""
+    category: "",
   });
 
   //Validation
@@ -108,10 +112,11 @@ const AddItem = () => {
             <form onSubmit={onSubmit}>
               <label>
                 Item Name:
-                <Input 
-                  name="item_name" 
-                  value={item.item_name} 
-                  onChange={inputChange} />
+                <Input
+                  name="item_name"
+                  value={item.item_name}
+                  onChange={inputChange}
+                />
               </label>
               <label>
                 Description:
