@@ -83,6 +83,7 @@ function LoginForm() {
                       name="username"
                       onChange={handleChange}
                     />
+                    <p>{errors.username}</p>
                   </label>
                 </div>
                 <div>
@@ -93,6 +94,7 @@ function LoginForm() {
                       name="password"
                       onChange={handleChange}
                     />
+                    <p>{errors.password}</p>
                   </label>
                 </div>
 
