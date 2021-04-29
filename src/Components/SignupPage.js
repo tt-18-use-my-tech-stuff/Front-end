@@ -46,7 +46,7 @@ const SignupPage = () => {
         localStorage.setItem("token", res.data.token);
         history.push("/items");
       })
-      .catch((err) => setSubmissionErrors(err.response));
+      .catch((err) => setSubmissionErrors(err.response.data.message));
     setFormValues(initialFormValues);
   };
 
