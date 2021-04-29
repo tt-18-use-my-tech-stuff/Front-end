@@ -2,64 +2,78 @@ import React, { useEffect, useState } from 'react';
 // import { axiosWithAuth } from '../helpers/axiosWithAuth'; 
 import { useHistory, useParams } from 'react-router-dom'
 import { Container, Row, Col, Button } from "reactstrap";
+import {axiosWithAuth} from "../Components/helpers/axiosWithAuth";
+import styled from "styled-components";
 
+const FormContainer = styled.div`
+  margin-top: 150px;
+  width: 100%;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid #d5d5d5;
+  border-radius: 5px;
+  margin-bottom: 15px;
+`;
+
+const initialValue = {
+  item_name: "",
+  item_description: "",
+};
+
+// const initialErrors = {
+//   item_name: "",
+//   item_description: ""
+// }
 
 const ItemEdit = () => {
-    const { id } = useParams();
-    const history = useHistory();
-    const [ item, setItem ] = useState([]);
-    const [ itemName, setItemName ] = useState({});
-    const [ itemDescription, setItemDescription ] = useState({});
+  const [ item, setItem ] = useState(initialValue);
+  // Will add errors later on
+  // const [ errors, setErrors ] = useState(initialValue);
+  // const [ disabled, setDisable ] = useState(true);
+  const { item_id } = useParams();
+  const history = useHistory();
+  
+  useEffect(() => {
+    console.log(useParams)
+    console.log(item_id)
+      axiosWithAuth()
+      .get(`/items/${item_id}`) // add
+      .then((res) => {
+          console.log("item edit response", res.data);
+          setItem(res.data);
+      })
+      .catch((err) => {
+          console.log(err);
+      })
+  }, []);
 
-    useEffect(() => {
-        axiosWithAuth(`https://tt18-build-week.herokuapp.com/api/items/${id}`)
-        .get() // add
-        .then((res) => {
-            console.log("item edit response", res.data);
-            setItem(res.data);
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-    }, []);
+  const onChange = (e) => {
+    const { name, value } = e.target
+    setItem({...item, [name]: value})
+  }
 
-    const editName = (ev) => { //combine into object
-        setItemName({ ...itemName, [ev.target.name] : ev.target.value });
-    };
-
-    const editDescription = (ev) => {
-        setItemDescription({ ...itemDescription, [ev.target.name] : ev.target.value });
-    };
-
-    const cancel = (e) => {
-        e.preventDefault();
-        history.push(``) // add
-    };
-
-    const submitHandler = (e) => {
-        e.preventDefault();
-        console.log("put item in submit handler");
-        
-        axiosWithAuth()
-        .put() // add
-        .then(() => {
-            console.log("name was changed")
-        })
-        .catch((err) => {
-            console.log(err.response)
-        })
-
-        axiosWithAuth()
-        .put() // add
-        .then(() => {
-            console.log("description was changed")
-        })
-        .catch((err) => {
-            console.log(err.response)
-        })
-
-        history.push() // add
-    }
+  const submitHandler = (e) => {
+      e.preventDefault();
+      const newItem = {
+        item_name: item.item_name.trim(),
+        item_description: item.item_description.trim()
+      }
+      axiosWithAuth()
+      .put(`/items/${item_id}`, newItem) // add
+      .then((res) => {
+          console.log(res)
+          setItem(initialValue)  
+          history.push("/items") 
+      })
+      .catch((err) => {
+          alert(err)
+      });
+      
+  }
+  
 
     return (
         <Container>
@@ -70,26 +84,23 @@ const ItemEdit = () => {
             <form onSubmit={submitHandler}>
               <label>
                 Item Name:
-                <Input name="name" value={item.name} onChange={editName} />
+                <Input 
+                  name="item_name"
+                  type="text" 
+                  value={item.item_name} 
+                  onChange={onChange} />
               </label>
 
               <label>
                 Description:
                 <Input
-                  name="description"
-                  value={item.description}
-                  onChange={editDescription}
+                  name="item_description"
+                  type="text" 
+                  value={item.item_description}
+                  onChange={onChange}
                 />
               </label>
-              <div>
-                <Button
-                  type="submit"
-                  disabled={!item.name || !item.description}
-                >
-                  Save Changes
-                </Button>
-              </div>
-             
+              <Button>Save Changes</Button>           
             </form>
           </FormContainer>
         </Col>
@@ -98,4 +109,4 @@ const ItemEdit = () => {
   );
 };
 
-
+export default ItemEdit;

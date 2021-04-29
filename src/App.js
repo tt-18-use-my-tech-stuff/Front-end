@@ -15,6 +15,7 @@ import HomePage from "./Components/HomePage";
 import ItemPage from "./Components/ItemPage";
 import AvailableTechList from "./Components/AvailableTechList";
 import Profile from "./Components/Profile";
+import ItemEdit from "./Components/itemEdit";
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
         <Route path="/profile" component={Profile} />
 
         <Route path="/lenderDashboard" component={LenderDashboard} />
-        <Route path="/editItem/:item_id" component={"editItem.js"} />
+        <Route path="/editItem/:item_id" component={ItemEdit} />
         <Route path="/items/:item_id" component={ItemPage} />
         <Route path="/items">
           <AvailableTechList />
