@@ -17,6 +17,10 @@ const Input = styled.input`
   margin-bottom: 15px;
 `;
 
+const Error = styled.h4`
+  color: red;
+`;
+
 function EditAccount() {
   const [formValues, setFormValues] = useState({
     username: "",
@@ -24,11 +28,13 @@ function EditAccount() {
     email: "",
   });
   const [alert, setAlert] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     axiosWithAuth()
       .get("/account")
       .then((res) => {
+        console.log(res);
         setFormValues(res.data);
       })
       .catch((err) => {
@@ -44,7 +50,8 @@ function EditAccount() {
         setAlert(!false);
       })
       .catch((err) => {
-        console.log(err.response);
+        console.log(err.response.statusText);
+        setError(err.response.statusText);
       });
   };
   const onChange = (e) => {
@@ -58,6 +65,10 @@ function EditAccount() {
           <p>You Updated your Account</p>
         </Alert>
       )}
+      <br />
+      <br />
+
+      <Error>{error} </Error>
       <Row>
         <Col xs="12" md={{ size: 6, offset: 3 }}>
           <FormContainer>

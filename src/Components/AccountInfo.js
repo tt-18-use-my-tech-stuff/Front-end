@@ -41,11 +41,7 @@ const AccountInfo = () => {
       <br />
 
       <h1>
-        Password:{" "}
-        <Badge color="secondary">
-          {" "}
-          🤫 🤐 hah Nice Try! Im keeping it secret 😶😶
-        </Badge>
+        Password: <Badge color="secondary"> 🤫 🤐 😶</Badge>
       </h1>
     </div>
   );
