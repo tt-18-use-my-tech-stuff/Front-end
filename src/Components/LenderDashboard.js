@@ -47,7 +47,6 @@ const LenderDashboard = (props) => {
             renter: "Thor",
           },
         ]} */}
-      />
     </div>
   );
 };
