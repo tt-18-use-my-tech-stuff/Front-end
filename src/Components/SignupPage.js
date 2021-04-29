@@ -99,7 +99,6 @@ const SignupPage = () => {
                       type="text"
                       placeholder="Username"
                     />
-                    <p>{formErrors.username}</p>
                   </div>
                   <div>
                     <Input
@@ -109,7 +108,6 @@ const SignupPage = () => {
                       type="password"
                       placeholder="Password"
                     />
-                    <p>{formErrors.password}</p>
                   </div>
 
                   <div>
@@ -120,16 +118,15 @@ const SignupPage = () => {
                       type="text"
                       placeholder="email"
                     />
-                    <p>{formErrors.email}</p>
                   </div>
                   <div>
                     <p>{submissionErrors}</p>
                   </div>
                   <Button type="submit">Sign Up!</Button>
                   <div>
-                    {formErrors.userName}
-                    {formErrors.password}
-                    {formErrors.email}
+                    <p>{formErrors.userName}</p>
+                    <p>{formErrors.password}</p>
+                    <p>{formErrors.email}</p>
                   </div>
                 </form>
               </div>
