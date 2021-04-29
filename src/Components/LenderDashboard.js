@@ -27,7 +27,7 @@ const LenderDashboard = (props) => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [itemList]);
 
   return (
     <div>
