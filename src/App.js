@@ -16,6 +16,7 @@ import ItemPage from "./Components/ItemPage";
 import AvailableTechList from "./Components/AvailableTechList";
 import Profile from "./Components/Profile";
 import ItemEdit from "./Components/itemEdit";
+import RequestList from "./Components/Requests/RequestList";
 
 function App() {
   return (
@@ -37,6 +38,11 @@ function App() {
         <Route path="/items">
           <AvailableTechList />
         </Route>
+
+        {/* <Route pathe="/rentedItems" /> */}
+        {/* <Route exact path="/requests/:request_id" component={"RequestForm.js"}/> */}
+        <Route exact path="/requests" component={RequestList} />
+
       </Switch>
     </div>
   );
