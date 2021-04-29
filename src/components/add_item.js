@@ -35,14 +35,13 @@ const AddItem = () => {
 
   //Change handler
   const inputChange = (event) => {
-    validateItem(event);
-    const isPrice = event.target.name === "price";
+    const { name, value } = event.target;
+    const isPrice = name === "price";
     setItem({
       ...item,
-      [event.target.name]: isPrice
-        ? Number(event.target.value)
-        : event.target.value,
+      [name]: isPrice ? (isNaN(Number(value)) ? 0 : Number(value)) : value,
     });
+    validateItem(name, item[name]);
   };
 
   //Submit handler
@@ -72,21 +71,21 @@ const AddItem = () => {
   });
 
   //Validation
-  const validateItem = (event) => {
+  const validateItem = (name, value) => {
     yup
-      .reach(schema, event.target.name)
-      .validate(event.target.value)
+      .reach(schema, name)
+      .validate(value)
       .then(() => {
         setErrors({
           ...errors,
-          [event.target.name]: "",
+          [name]: "",
         });
       })
       .catch((err) => {
         console.log(err.errors);
         setErrors({
           ...errors,
-          [event.target.name]: err.errors[0],
+          [name]: err.errors[0],
         });
       });
   };
