@@ -29,6 +29,8 @@ const SignupPage = () => {
 
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormValues);
+  const [submissionErrors, setSubmissionErrors] = useState("");
+
   const [disabled, setDisabled] = useState(true);
   const history = useHistory();
 
@@ -44,7 +46,7 @@ const SignupPage = () => {
         localStorage.setItem("token", res.data.token);
         history.push("/items");
       })
-      .catch((err) => console.log(err.response));
+      .catch((err) => setSubmissionErrors(err.response.data.message));
     setFormValues(initialFormValues);
   };
 
@@ -117,12 +119,14 @@ const SignupPage = () => {
                       placeholder="email"
                     />
                   </div>
-
+                  <div>
+                    <p>{submissionErrors}</p>
+                  </div>
                   <Button type="submit">Sign Up!</Button>
                   <div>
-                    {formErrors.userName}
-                    {formErrors.password}
-                    {formErrors.email}
+                    <p>{formErrors.userName}</p>
+                    <p>{formErrors.password}</p>
+                    <p>{formErrors.email}</p>
                   </div>
                 </form>
               </div>
