@@ -105,7 +105,7 @@ function Profile() {
         <TabPane tabId="3">
           <Row>
             <Col sm="12">
-              <h4>My Items</h4>
+              <h4>Items Renting</h4>
               <UserDashboard />
             </Col>
           </Row>
@@ -114,7 +114,7 @@ function Profile() {
         <TabPane tabId="4">
           <Row>
             <Col sm="12">
-              <h4>Items I'm Renting</h4>
+              <h4>My Items</h4>
               <LenderDashboard />
             </Col>
           </Row>
