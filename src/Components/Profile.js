@@ -61,7 +61,7 @@ function Profile() {
               toggle("3");
             }}
           >
-            Items Rented
+            Items Renting
           </NavLink>
         </NavItem>
         <NavItem>
@@ -71,7 +71,7 @@ function Profile() {
               toggle("4");
             }}
           >
-            Items Owned
+            My Items
           </NavLink>
         </NavItem>
         <NavItem>
@@ -105,8 +105,8 @@ function Profile() {
         <TabPane tabId="3">
           <Row>
             <Col sm="12">
-              <h4>Items I'm Renting</h4>
-              <LenderDashboard />
+              <h4>My Items</h4>
+              <UserDashboard />
             </Col>
           </Row>
         </TabPane>
@@ -114,8 +114,8 @@ function Profile() {
         <TabPane tabId="4">
           <Row>
             <Col sm="12">
-              <h4>Items I Own</h4>
-              <UserDashboard />
+              <h4>Items I'm Renting</h4>
+              <LenderDashboard />
             </Col>
           </Row>
         </TabPane>
