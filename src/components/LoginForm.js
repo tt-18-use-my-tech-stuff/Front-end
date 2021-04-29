@@ -19,7 +19,7 @@ const Input = styled.input`
 `;
 
 function LoginForm() {
-  const [values, errors, handleChange, handleSubmit, isSubmitting] = useLogin();
+  const [errors, values, handleChange, handleSubmit, isSubmitting] = useLogin();
 
   // const initialFormValues = {
   //     username: "",
