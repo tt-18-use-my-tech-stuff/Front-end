@@ -58,7 +58,7 @@ const AddItem = () => {
         history.push("/items");
       })
       .catch((err) => {
-        console.log(err.response);
+        console.log(err);
       });
     setItem(initialValue);
   };
