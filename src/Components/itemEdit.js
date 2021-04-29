@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import { axiosWithAuth } from '../helpers/axiosWithAuth';
 import { useHistory, useParams } from "react-router-dom";
 import { Container, Row, Col, Button } from "reactstrap";
 import { axiosWithAuth } from "../Components/helpers/axiosWithAuth";
@@ -42,7 +41,7 @@ const ItemEdit = () => {
     console.log(useParams);
     console.log(item_id);
     axiosWithAuth()
-      .get(`/items/${item_id}`) // add
+      .get(`/items/${item_id}`) 
       .then((res) => {
         console.log("item edit response", res.data);
         setItem(res.data);
@@ -50,7 +49,7 @@ const ItemEdit = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  },); //[]
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -66,14 +65,14 @@ const ItemEdit = () => {
       category: item.category.trim(),
     };
     axiosWithAuth()
-      .put(`/items/${item_id}`, newItem) // add
+      .put(`/items/${item_id}`, newItem) 
       .then((res) => {
         console.log(res);
         setItem(initialValue);
         history.push("/items");
       })
       .catch((err) => {
-        alert(err);
+        alert(err.response.data.message);
       });
   };
 
