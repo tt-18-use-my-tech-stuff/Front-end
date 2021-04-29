@@ -14,7 +14,7 @@ import {
 import techitems from "../img/techitems.jpg";
 import { useHistory } from "react-router";
 import { axiosWithAuth } from "./helpers/axiosWithAuth";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 const Card = styled(ReactCard)`
   margin-bottom: 50px;
@@ -76,6 +76,7 @@ const TechCard = ({ item }) => {
           .then((res) => {
             console.log(res.data);
             alert("Deletion Successful");
+            history.go(0);
           })
           .catch((err) => {
             console.log(err.message);
