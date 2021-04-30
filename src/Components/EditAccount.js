@@ -72,6 +72,7 @@ function EditAccount() {
       <Error>{error} </Error>
       <Row>
         <Col xs="12" md={{ size: 6, offset: 3 }}>
+          <h1>Edit Account</h1>
           <FormContainer>
             <div>
               <div>
