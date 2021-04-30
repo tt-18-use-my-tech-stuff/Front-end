@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { Container, Row, Col, Button } from "reactstrap";
-import { axiosWithAuth } from "../Components/helpers/axiosWithAuth";
+import { axiosWithAuth } from "../components/helpers/axiosWithAuth";
 import styled from "styled-components";
 
 const FormContainer = styled.div`

@@ -2,19 +2,19 @@ import "./App.css";
 // import { Nav, Navbar } from "react-bootstrap";
 import { Switch, Route } from "react-router-dom";
 
-import AddItem from "./Components/add_item";
-import SignUp from "./Components/SignupPage";
-import LoginForm from "./Components/LoginForm";
-import LenderDashboard from "./Components/LenderDashboard";
-// import PrivateRoute from "./Components/PrivateRoute";
-import Navigation from "./Components/Navigation";
-import HomePage from "./Components/HomePage";
-import ItemPage from "./Components/ItemPage";
-import AvailableTechList from "./Components/AvailableTechList";
-import Profile from "./Components/Profile";
-import ItemEdit from "./Components/itemEdit";
-import RequestList from "./Components/Requests/RequestList";
-import ResponseForm from "./Components/Requests/ResponseForm";
+import AddItem from "./components/add_item";
+import SignUp from "./components/SignupPage";
+import LoginForm from "./components/LoginForm";
+import LenderDashboard from "./components/LenderDashboard";
+// import PrivateRoute from "./components/PrivateRoute";
+import Navigation from "./components/Navigation";
+import HomePage from "./components/HomePage";
+import ItemPage from "./components/ItemPage";
+import AvailableTechList from "./components/AvailableTechList";
+import Profile from "./components/Profile";
+import ItemEdit from "./components/itemEdit";
+import RequestList from "./components/Requests/RequestList";
+import ResponseForm from "./components/Requests/ResponseForm";
 
 function App() {
   return (
