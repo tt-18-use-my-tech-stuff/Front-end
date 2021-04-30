@@ -50,7 +50,8 @@ function EditAccount() {
         setAlert(!false);
       })
       .catch((err) => {
-        console.log(err.response.statusText);
+        console.log(err);
+        console.log(err.response);
         setError(err.response.statusText);
       });
   };
