@@ -87,15 +87,15 @@ function EditAccount() {
                       placeholder="Username"
                     />
                   </div>
-                  {/* <div>
-                      <Input
-                        value={formValues.password}
-                        onChange={onChange}
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                      />
-                    </div> */}
+                  <div>
+                    <Input
+                      value={formValues.password}
+                      onChange={onChange}
+                      name="password"
+                      type="password"
+                      placeholder="Password"
+                    />
+                  </div>
 
                   <div>
                     <Input
