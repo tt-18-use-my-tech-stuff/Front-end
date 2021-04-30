@@ -12,6 +12,8 @@ Meta
 
 Front End Team: Aldo Mata, Emily Perkins, Jaison Alonso, Jesus Senac, Kaseem Bradley, Margarita Salazar, Taylor Kang-Illescas
 
+Back End Team: Jonathan Fox, Matthew Ellis, Nate Pace, Stav Corcos
+
 Dependencies
 
 yup v0.32.9, axios v0.21.1, react-router-dom v5.2.0, react-scripts v4.0.3, styled components v5.2.3
