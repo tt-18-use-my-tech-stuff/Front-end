@@ -13,7 +13,7 @@ const Navigation = () => {
   };
 
   return (
-    <Navbar dark>
+    <Navbar className="Navigation" dark>
       <NavbarBrand tag={Link} to="/" className="mr-auto">
         Use My Tech Stuff
       </NavbarBrand>
