@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 import { Alert } from "react-bootstrap";
 import { axiosWithAuth } from "../helpers/axiosWithAuth";
@@ -17,7 +17,7 @@ function ResponseForm() {
   const [errorMessage, setErrorMessage] = useState(false)
   const {request_id} = useParams();
   const history = useHistory();
-  
+
   const onSubmit = (e) => {
     e.preventDefault();
     axiosWithAuth()

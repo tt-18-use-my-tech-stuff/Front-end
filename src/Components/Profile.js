@@ -61,7 +61,7 @@ function Profile() {
               toggle("3");
             }}
           >
-            Items Renting
+            Items Request
           </NavLink>
         </NavItem>
         <NavItem>
@@ -71,7 +71,7 @@ function Profile() {
               toggle("4");
             }}
           >
-            My Request
+            My Items
           </NavLink>
         </NavItem>
         <NavItem>
