@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import UserDashboard from "../components/UserDashboard";
+import UserDashboard from "../component/UserDashboard";
 import LenderDashboard from "./LenderDashboard";
 import EditAccount from "./EditAccount";
 import AccountInfo from "./AccountInfo";
