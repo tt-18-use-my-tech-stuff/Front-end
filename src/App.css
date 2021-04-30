@@ -111,3 +111,15 @@ a {
   margin-bottom: 50px;
   color: rgb(200, 220, 220);
 }
+
+.profileTab {
+  /* color: red; */
+  font-weight: bold;
+  cursor: pointer;
+  /* color: #25384b; */
+}
+
+.Profile-links a:hover {
+  color: #2e3842;
+  text-decoration: underline;
+}
