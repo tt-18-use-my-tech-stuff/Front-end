@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import schema from "../validation/itemSchema";
 import * as yup from "yup";
 import styled from "styled-components";
@@ -41,6 +40,7 @@ const AddItem = () => {
       ...item,
       [name]: isPrice ? (isNaN(Number(value)) ? 0 : Number(value)) : value,
     });
+
     validateItem(name, item[name]);
   };
 
@@ -152,6 +152,10 @@ const AddItem = () => {
                   Add Item
                 </Button>
               </div>
+              <p>{errors.item_name}</p>
+              <p>{errors.item_description}</p>
+              <p>{errors.price}</p>
+              <p>{errors.category}</p>
             </form>
           </FormContainer>
         </Col>
