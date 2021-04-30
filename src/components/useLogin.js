@@ -5,7 +5,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 export const useLogin = () => {
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -13,18 +13,18 @@ export const useLogin = () => {
   const history = useHistory();
   // console.log('values', values)
 
-  useEffect(() => {
-    // if (Object.keys(errors) === 0 && isSubmitting) {
-    if (isSubmitting) {
-      //api call to authenticate user using the values object
-      const authenticatedUser = {
-        username: values.username,
-        isAuthenticated: true,
-      };
+  // useEffect(() => {
+  //   // if (Object.keys(errors) === 0 && isSubmitting) {
+  //   if (isSubmitting) {
+  //     //api call to authenticate user using the values object
+  //     const authenticatedUser = {
+  //       username: values.username,
+  //       isAuthenticated: true,
+  //     };
 
-      setUser(authenticatedUser);
-    }
-  }, [values, isSubmitting]);
+  //     setUser(authenticatedUser);
+  //   }
+  // }, [values, isSubmitting]);
 
   // const validate = values => {
   //   let errors = {}
@@ -61,7 +61,7 @@ export const useLogin = () => {
     console.log(values);
     setValues({});
     // setErrors(validate(values))
-    // setIsSubmitting(true)
+    setIsSubmitting(true);
     axios
       .post("https://tt18-build-week.herokuapp.com/api/auth/login", values)
       .then((res) => {
@@ -80,5 +80,5 @@ export const useLogin = () => {
     });
   }, [setIsSubmitting, values]);
 
-  return [errors, values, handleChange, handleSubmit, isSubmitting];
+  return [errors, handleChange, handleSubmit, isSubmitting];
 };

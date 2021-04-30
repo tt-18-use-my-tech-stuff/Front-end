@@ -41,7 +41,7 @@ const ItemEdit = () => {
     console.log(useParams);
     console.log(item_id);
     axiosWithAuth()
-      .get(`/items/${item_id}`) 
+      .get(`/items/${item_id}`)
       .then((res) => {
         console.log("item edit response", res.data);
         setItem(res.data);
@@ -49,7 +49,7 @@ const ItemEdit = () => {
       .catch((err) => {
         console.log(err);
       });
-  },[]); 
+  }, [item_id]);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -65,7 +65,7 @@ const ItemEdit = () => {
       category: item.category.trim(),
     };
     axiosWithAuth()
-      .put(`/items/${item_id}`, newItem) 
+      .put(`/items/${item_id}`, newItem)
       .then((res) => {
         console.log(res);
         setItem(initialValue);

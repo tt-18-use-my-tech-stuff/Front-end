@@ -4,7 +4,6 @@ import schema from "../validation/registrationSchema";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { Container, Row, Col, Button } from "reactstrap";
-import { SpinnerDiv, Spinner } from "./styled-components/spinner";
 import styled from "styled-components";
 
 const FormContainer = styled.div`
@@ -122,7 +121,9 @@ const SignupPage = () => {
                   <div>
                     <p>{submissionErrors}</p>
                   </div>
-                  <Button type="submit">Sign Up!</Button>
+                  <Button disabled={disabled} type="submit">
+                    Sign Up!
+                  </Button>
                   <div>
                     <p>{formErrors.userName}</p>
                     <p>{formErrors.password}</p>

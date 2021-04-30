@@ -2,7 +2,6 @@ import React from "react";
 import { Jumbotron, Button } from "reactstrap";
 // import { Route, Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import styled from "styled-components";
 import facebook from "../assets/facebook-brands.svg";
 import twitter from "../assets/twitter-brands.svg";
 import instagram from "../assets/instagram-brands.svg";

@@ -1,9 +1,6 @@
-import React, { useState, useHistory } from "react";
 import { useLogin } from "./useLogin";
-import axios from "axios";
 import styled from "styled-components";
 import { Container, Row, Col, Button } from "reactstrap";
-import useToken from "../hooks/useToken";
 
 const FormContainer = styled.div`
   margin-top: 150px;
@@ -19,7 +16,7 @@ const Input = styled.input`
 `;
 
 function LoginForm() {
-  const [errors, values, handleChange, handleSubmit, isSubmitting] = useLogin();
+  const [errors, handleChange, handleSubmit, isSubmitting] = useLogin();
 
   // const initialFormValues = {
   //     username: "",
