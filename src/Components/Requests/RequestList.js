@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import RequestCard from "./RequestCard";
 // import {requested} from "../MockData/RequestData";
