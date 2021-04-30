@@ -71,7 +71,7 @@ function Profile() {
               toggle("4");
             }}
           >
-            My Items
+            My Request
           </NavLink>
         </NavItem>
         <NavItem>
