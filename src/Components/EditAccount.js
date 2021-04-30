@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 import { Alert } from "react-bootstrap";
 import { axiosWithAuth } from "./helpers/axiosWithAuth";
@@ -25,17 +25,6 @@ function EditAccount() {
   });
   const [alert, setAlert] = useState(false);
 
-  useEffect(() => {
-    axiosWithAuth()
-      .get("/account")
-      .then((res) => {
-        setFormValues(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
   const onSubmit = (e) => {
     e.preventDefault();
     axiosWithAuth()
@@ -61,9 +50,7 @@ function EditAccount() {
       <Row>
         <Col xs="12" md={{ size: 6, offset: 3 }}>
           <FormContainer>
-            <div className="signup-form">
-              <h2>Edit Account</h2>
-
+            <div>
               <div>
                 <form onSubmit={onSubmit}>
                   <div>
@@ -72,18 +59,18 @@ function EditAccount() {
                       onChange={onChange}
                       name="username"
                       type="text"
-                      placeholder="Username"
+                      placeholder="New Username"
                     />
                   </div>
-                  {/* <div>
+                  <div>
                       <Input
                         value={formValues.password}
                         onChange={onChange}
                         name="password"
                         type="password"
-                        placeholder="Password"
+                        placeholder="New Password"
                       />
-                    </div> */}
+                    </div>
 
                   <div>
                     <Input
@@ -91,7 +78,7 @@ function EditAccount() {
                       onChange={onChange}
                       name="email"
                       type="text"
-                      placeholder="email"
+                      placeholder="New Email"
                     />
                   </div>
 

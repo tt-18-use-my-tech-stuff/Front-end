@@ -21,52 +21,6 @@ const Input = styled.input`
 function LoginForm() {
   const [errors, values, handleChange, handleSubmit, isSubmitting] = useLogin();
 
-  // const initialFormValues = {
-  //     username: "",
-  //     password: "",
-  //   };
-  // const initialFormErrors = {
-  //     username: "",
-  //     password: "",
-  //   };
-
-  // const Login = () => {
-  //   const [ formValues, setFormValues ] =  useState(initialFormValues);
-  //   const [ formErrors, setFormErrors ] = useState(initialFormErrors)
-  //   const [ disabled, setDisabled ] = useState(true);
-  //   const history = useHistory()
-  //   const loginPost = (newFormValues) => {
-  //     axios.post("https://tt18-build-week.herokuapp.com/api/auth/login", newFormValues)
-  //     .then(res=>{
-  //       console.log("login successful", res.data)
-  //       alert(res.data.message)
-  //       localStorage.setItem('token', res.data.token)
-  //       history.push("/") //add
-  //     })
-  //     .catch(err=>{
-  //       console.log("login unsuccessful: ", err.response)
-  //     })
-  //   }
-
-  // REDUX
-  //  const LOGIN_START = "LOGIN_START";
-  //  const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-  //  const LOGIN_FAILURE = "LOGIN_FAILURE";
-
-  //     const login = (creds) => (dispatch) => {
-  //     dispatchEvent({ type: LOGIN_START });
-  //     axios
-  //     .post("https://tt18-build-week.herokuapp.com/api/auth/login", creds)
-  //     .then((res) => {
-  //       dispatchEvent({ type: LOGIN_SUCCESS , payload: res.data });
-  //     })
-  //     .catch((err) => {
-  //       dispatchEvent({ type: LOGIN_FAILURE} );
-  //     })
-  //   }
-
-  // if (user && !user.isAuthenticated) return <Redirect to='/home' />
-
   return (
     <Container>
       <Row>
@@ -116,55 +70,5 @@ function LoginForm() {
   );
 }
 
-// function LoginForm(/*props*/) {
-
-//   // const { values, submit, change, disabled, errors } = props;
-
-//   const [state, setState] = useState({
-//     username: "",
-//     password: "",
-//   })
-
-//   const onSubmit = (evt) => {
-//     evt.preventDefault();
-//     // submit();
-//   }
-
-//   const onChange = (evt) => {
-//     // update the inputs
-//     setState({...state, [evt.target.name]: evt.target.value})
-//   }
-
-//   return (
-//     <div className="login-wrapper" onSubmit={onSubmit}>
-//       <h3>Log In Here</h3>
-//       <form>
-//         <label>
-//           Username
-//           <input
-//             type="text"
-//             name="username"
-//             value={state.username}
-//             onChange={onChange}
-//           />
-//         </label>
-//         <label>
-//           Password
-//           <input
-//             type="password"
-//             name="password"
-//             value={ state.password }
-//             onChange={onChange}
-//           />
-//         </label>
-//         <div>
-//           <button type="submit">
-//             Submit
-//           </button>
-//         </div>
-//       </form>
-//     </div>
-//   )
-// }
 
 export default LoginForm;

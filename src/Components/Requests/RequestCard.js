@@ -11,6 +11,7 @@ import {
   Badge,
 } from "reactstrap";
 import techitems from "../../img/techitems.jpg";
+import { useHistory } from "react-router";
 
 const Card = styled(ReactCard)`
   margin-bottom: 50px;
@@ -18,6 +19,7 @@ const Card = styled(ReactCard)`
 
 const RequestCard = (props) => {
   const {request, deleteRequest} = props;
+  const history = useHistory()
   return (
     <Card>
       <CardImg top width="100%" src={techitems} alt="Recipe" />
@@ -35,7 +37,7 @@ const RequestCard = (props) => {
       </CardBody>
 
       <CardBody>
-        {request.requester && <Button onClick={()=>console.log("route to response")}>Respond</Button>}
+        {request.requester && <Button onClick={()=>history.push(`/requests/${request.request_id}`)}>Respond</Button>}
         {request.owner && <Button onClick={()=>deleteRequest(request.request_id)}>Delete</Button>}
       </CardBody>
     </Card>

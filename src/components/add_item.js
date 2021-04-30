@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import schema from "../validation/itemSchema";
 import * as yup from "yup";
 import styled from "styled-components";
@@ -90,17 +89,6 @@ const AddItem = () => {
       });
   };
 
-  //logic for displaying added items on screen
-  // let itemValue = () => {
-  //   if (item.name !== "" && item.description !== "") {
-  //     return (
-  //       <div>
-  //         <p>{item.name}</p>
-  //         <p>{item.description}</p>
-  //       </div>
-  //     );
-  //   }
-  // };
 
   return (
     <Container>
