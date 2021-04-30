@@ -35,7 +35,7 @@ function EditAccount() {
       .get("/account")
       .then((res) => {
         console.log(res);
-        setFormValues(res.data);
+        setFormValues({ ...res.data, password: "" });
       })
       .catch((err) => {
         console.log(err);
