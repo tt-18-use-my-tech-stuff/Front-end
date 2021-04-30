@@ -65,7 +65,7 @@ const TechCard = ({ item }) => {
     handleSafeClick = () => {
       // routes (in theory) to edit item page
       console.log(item);
-      history.push(`/items/${item.item_id}`);
+      history.push(`/editItem/${item.item_id}`);
     };
 
     handleScaryClick = () => {

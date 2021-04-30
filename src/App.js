@@ -3,13 +3,10 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 
 import AddItem from "./Components/add_item";
-import TechList from "./Components/TechList";
 import SignUp from "./Components/SignupPage";
 import LoginForm from "./Components/LoginForm";
-import { DummyData } from "./Components/MockData/DummyData";
 import LenderDashboard from "./Components/LenderDashboard";
 // import PrivateRoute from "./Components/PrivateRoute";
-import UserDashboard from "./Components/UserDashboard";
 import Navigation from "./Components/Navigation";
 import HomePage from "./Components/HomePage";
 import ItemPage from "./Components/ItemPage";

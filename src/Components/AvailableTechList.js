@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Container, Row, Col, Card, CardBody } from "reactstrap";
 import { SpinnerDiv, Spinner } from "./styled-components/spinner";
 import { axiosWithAuth } from "./helpers/axiosWithAuth";
-import { Button, Form, Label, Input } from "reactstrap";
-import TechItem from "./TechItem";
 import TechList from "./TechList";
 
 const AvailableTechList = () => {
   const [itemList, setItemList] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
+  // const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     axiosWithAuth()

@@ -33,10 +33,10 @@ function Profile() {
 
   return (
     <div>
-      <Nav tabs>
+      <Nav tabs className="Profile-links">
         <NavItem>
           <NavLink
-            className={{ active: activeTab === "1" }}
+            className="profileTab"
             onClick={() => {
               toggle("1");
             }}
@@ -46,7 +46,7 @@ function Profile() {
         </NavItem>
         <NavItem>
           <NavLink
-            className={{ active: activeTab === "2" }}
+            className="profileTab"
             onClick={() => {
               toggle("2");
             }}
@@ -56,7 +56,7 @@ function Profile() {
         </NavItem>
         <NavItem>
           <NavLink
-            className={{ active: activeTab === "3" }}
+            className="profileTab"
             onClick={() => {
               toggle("3");
             }}
@@ -66,7 +66,7 @@ function Profile() {
         </NavItem>
         <NavItem>
           <NavLink
-            className={{ active: activeTab === "4" }}
+            className="profileTab"
             onClick={() => {
               toggle("4");
             }}
@@ -76,7 +76,7 @@ function Profile() {
         </NavItem>
         <NavItem>
           <NavLink
-            className={{ active: activeTab === "5" }}
+            className="profileTab"
             onClick={() => {
               toggle("5");
             }}
@@ -97,7 +97,7 @@ function Profile() {
         <TabPane tabId="2">
           <Row>
             <Col sm="12">
-              <h4>Edit My Account</h4>
+              {/* <h4>Edit My Account</h4> */}
               <EditAccount />
             </Col>
           </Row>

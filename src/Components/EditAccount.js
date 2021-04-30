@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 import { Alert } from "react-bootstrap";
 import { axiosWithAuth } from "./helpers/axiosWithAuth";
@@ -17,6 +17,10 @@ const Input = styled.input`
   margin-bottom: 15px;
 `;
 
+const Error = styled.h4`
+  color: red;
+`;
+
 function EditAccount() {
   const [formValues, setFormValues] = useState({
     username: "",
@@ -24,6 +28,19 @@ function EditAccount() {
     email: "",
   });
   const [alert, setAlert] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    axiosWithAuth()
+      .get("/account")
+      .then((res) => {
+        console.log(res);
+        setFormValues(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -33,7 +50,9 @@ function EditAccount() {
         setAlert(!false);
       })
       .catch((err) => {
+        console.log(err);
         console.log(err.response);
+        setError(err.response.statusText);
       });
   };
   const onChange = (e) => {
@@ -47,6 +66,10 @@ function EditAccount() {
           <p>You Updated your Account</p>
         </Alert>
       )}
+      <br />
+      <br />
+
+      <Error>{error} </Error>
       <Row>
         <Col xs="12" md={{ size: 6, offset: 3 }}>
           <FormContainer>
@@ -63,14 +86,14 @@ function EditAccount() {
                     />
                   </div>
                   <div>
-                      <Input
-                        value={formValues.password}
-                        onChange={onChange}
-                        name="password"
-                        type="password"
-                        placeholder="New Password"
-                      />
-                    </div>
+                    <Input
+                      value={formValues.password}
+                      onChange={onChange}
+                      name="password"
+                      type="password"
+                      placeholder="Password"
+                    />
+                  </div>
 
                   <div>
                     <Input

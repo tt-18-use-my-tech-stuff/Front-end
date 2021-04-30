@@ -61,7 +61,7 @@ export const useLogin = () => {
     console.log(values);
     setValues({});
     // setErrors(validate(values))
-    // setIsSubmitting(true)
+    setIsSubmitting(true);
     axios
       .post("https://tt18-build-week.herokuapp.com/api/auth/login", values)
       .then((res) => {
@@ -81,5 +81,5 @@ export const useLogin = () => {
     });
   }, [values]);
 
-  return [errors, values, handleChange, handleSubmit, isSubmitting];
+  return [errors, handleChange, handleSubmit, isSubmitting];
 };
