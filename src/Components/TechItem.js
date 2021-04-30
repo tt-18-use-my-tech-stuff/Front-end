@@ -45,7 +45,7 @@ const TechCard = ({ item }) => {
       // requests the item after confirmation
       if (confirm("request")) {
         axiosWithAuth()
-          .post(`/requests`, item.item_id)
+          .post(`/requests`,{ item_id: item.item_id})
           .then((res) => {
             console.log(res.data);
             alert(`You're request is ${res.data.status}.`);

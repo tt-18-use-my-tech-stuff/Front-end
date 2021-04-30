@@ -72,13 +72,14 @@ export const useLogin = () => {
       .catch((err) => {
         console.log("unsuccesful", err);
       });
+     
   };
 
   useEffect(() => {
     loginSchema.isValid(values).then((valid) => {
       setIsSubmitting(!valid);
     });
-  }, [setIsSubmitting, values]);
+  }, [values]);
 
   return [errors, handleChange, handleSubmit, isSubmitting];
 };

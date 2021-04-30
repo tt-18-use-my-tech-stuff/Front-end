@@ -73,9 +73,7 @@ function EditAccount() {
       <Row>
         <Col xs="12" md={{ size: 6, offset: 3 }}>
           <FormContainer>
-            <div className="signup-form">
-              <h2>Edit Account</h2>
-
+            <div>
               <div>
                 <form onSubmit={onSubmit}>
                   <div>
@@ -84,7 +82,7 @@ function EditAccount() {
                       onChange={onChange}
                       name="username"
                       type="text"
-                      placeholder="Username"
+                      placeholder="New Username"
                     />
                   </div>
                   <div>
@@ -103,7 +101,7 @@ function EditAccount() {
                       onChange={onChange}
                       name="email"
                       type="text"
-                      placeholder="email"
+                      placeholder="New Email"
                     />
                   </div>
 

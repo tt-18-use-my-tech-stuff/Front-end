@@ -71,7 +71,7 @@ function Profile() {
               toggle("4");
             }}
           >
-            My Items
+            My Request
           </NavLink>
         </NavItem>
         <NavItem>
@@ -105,7 +105,6 @@ function Profile() {
         <TabPane tabId="3">
           <Row>
             <Col sm="12">
-              <h4>Items Renting</h4>
               <UserDashboard />
             </Col>
           </Row>

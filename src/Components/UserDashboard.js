@@ -1,48 +1,73 @@
-import React, { useEffect, useState } from "react";
-// import { axiosWithAuth } from "./helpers/axiosWithAuth";
-import { Col, Container } from "reactstrap";
-import {Navbar, Nav, Form, FormControl, Button} from "react-bootstrap";
-import { requestData } from "./MockData/RequestData";
-import RequestCard from "./RequestCard";
+import React, {useState, useEffect} from "react";
+import {Navbar, Nav } from "react-bootstrap";
+import RequestList from "./Requests/RequestList";
+import { axiosWithAuth } from "./helpers/axiosWithAuth";
+import ItemsRequested from "./Requests/ItemsRequested";
+
 
 function UserDashboard () {
-    const [requests, setRequests] = useState([])
-    
+    const [requestsMade, setRequestsMade] = useState([]);
+    const [itemsRequests, setItemsRequest] = useState([]);
+    const [ toggle, setToggle ] = useState(true);
+
+    const fetchUserRequest = () => {
+        return axiosWithAuth()
+        .get("/account/requests")
+    }
+    const fetchItemsRequest = () => {
+        return axiosWithAuth()
+        .get("/account/requests/owned")
+    }
+
     useEffect(()=> {
-        setRequests(requestData)
-        // axiosWithAuth()
-        // .get()
-        // .then(res=>{
-        //     setRequest(res.data)
-        // })
-        // .catch(err=> {
-        //     console.log(err.response)
-        // })
+        Promise.all([fetchUserRequest(), fetchItemsRequest()])
+            .then(function(res){
+                setRequestsMade(res[0].data)
+                console.log(requestsMade)
+                setItemsRequest(res[1].data)
+            })
+            .catch(err=>{
+                console.log(err.response)
+            })
     }, [])
+
+    const deleteRequest = (id) => {
+        console.log(id)
+        axiosWithAuth()
+            .delete(`/requests/${id}`)
+            .then(res=> {
+                alert("Request was Deleted")
+            })
+            .catch(err=> {
+                console.log(err.response)
+            })
+    } 
+
     return(
         <div>
         <Navbar bg="light" variant="light">
             <Navbar.Brand >Dashboard</Navbar.Brand>
                 <Nav className="mr-auto">
-                <Nav.Link >Request</Nav.Link>
-                {/* <Nav.Link href="/pending">Pending Request</Nav.Link>
-                <Nav.Link href="/request-again">Rent Again</Nav.Link> */}
+                <Nav.Link href="#" >Request</Nav.Link>
+                <Nav.Link href="#"onClick={()=>setToggle(false)}>Requested</Nav.Link>
+                <Nav.Link href="#" onClick={()=>setToggle(true)}>My Request</Nav.Link>
             </Nav>
-            <Form inline>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+            {/* <Form inline>
+                <FormControl type="text" placeholder="Search By Title" className="mr-sm-2" />
                 <Button variant="outline-primary">Search</Button> 
-            </Form>
+            </Form> */}
         </Navbar>
-        {requests ?
-        <Container >
-            {requests.map((request)=>{
-
-                return(<Col xs="12" sm="6" md="4" key={request.request_id}>
-                  <RequestCard  request={request}/>
-                </Col>)
-            })}
-        </Container >
-        : <p>You have not placed any requests</p>}
+        {
+            toggle? <RequestList 
+            requestsMade={requestsMade} 
+            deleteRequest={deleteRequest}
+        /> 
+        :
+            <ItemsRequested 
+            itemsRequests={itemsRequests} 
+            deleteRequest={deleteRequest}
+        /> 
+        } 
         </div>
     )
 }
