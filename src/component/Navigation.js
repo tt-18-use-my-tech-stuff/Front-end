@@ -18,7 +18,7 @@ const Navigation = () => {
         Use My Tech Stuff
       </NavbarBrand>
 
-      {/* display view recipes, add recipe, and log out if user has token, else display log in and sign up */}
+      
       {localStorage.getItem("token") ? (
         <Nav className="nav-links">
           <NavItem>
